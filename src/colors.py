@@ -1,4 +1,3 @@
-import colorsys
 """
 +-----------------------------------------------------------------+
 |     Created by Chirag Mehta - http://chir.ag/projects/ntc       |
@@ -6,1588 +5,1576 @@ import colorsys
 |               ntc js (Name that Color JavaScript)               |
 +-----------------------------------------------------------------+
 
-lists etc. have been written specifically
+Original list of colors have been written specifically
 for the Name that Color JavaScript by Chirag Mehta unless otherwise
 specified.
+The following list was modified and uses HLS instead of HEX code.
 """
-colors = [
-    ["000000", "Black"],
-    ["000080", "Navy Blue"],
-    ["0000C8", "Dark Blue"],
-    ["0000FF", "Blue"],
-    ["000741", "Stratos"],
-    ["001B1C", "Swamp"],
-    ["002387", "Resolution Blue"],
-    ["002900", "Deep Fir"],
-    ["002E20", "Burnham"],
-    ["002FA7", "International Klein Blue"],
-    ["003153", "Prussian Blue"],
-    ["003366", "Midnight Blue"],
-    ["003399", "Smalt"],
-    ["003532", "Deep Teal"],
-    ["003E40", "Cyprus"],
-    ["004620", "Kaitoke Green"],
-    ["0047AB", "Cobalt"],
-    ["004816", "Crusoe"],
-    ["004950", "Sherpa Blue"],
-    ["0056A7", "Endeavour"],
-    ["00581A", "Camarone"],
-    ["0066CC", "Science Blue"],
-    ["0066FF", "Blue Ribbon"],
-    ["00755E", "Tropical Rain Forest"],
-    ["0076A3", "Allports"],
-    ["007BA7", "Deep Cerulean"],
-    ["007EC7", "Lochmara"],
-    ["007FFF", "Azure Radiance"],
-    ["008080", "Teal"],
-    ["0095B6", "Bondi Blue"],
-    ["009DC4", "Pacific Blue"],
-    ["00A693", "Persian Green"],
-    ["00A86B", "Jade"],
-    ["00CC99", "Caribbean Green"],
-    ["00CCCC", "Robin's Egg Blue"],
-    ["00FF00", "Green"],
-    ["00FF7F", "Spring Green"],
-    ["00FFFF", "Cyan / Aqua"],
-    ["010D1A", "Blue Charcoal"],
-    ["011635", "Midnight"],
-    ["011D13", "Holly"],
-    ["012731", "Daintree"],
-    ["01361C", "Cardin Green"],
-    ["01371A", "County Green"],
-    ["013E62", "Astronaut Blue"],
-    ["013F6A", "Regal Blue"],
-    ["014B43", "Aqua Deep"],
-    ["015E85", "Orient"],
-    ["016162", "Blue Stone"],
-    ["016D39", "Fun Green"],
-    ["01796F", "Pine Green"],
-    ["017987", "Blue Lagoon"],
-    ["01826B", "Deep Sea"],
-    ["01A368", "Green Haze"],
-    ["022D15", "English Holly"],
-    ["02402C", "Sherwood Green"],
-    ["02478E", "Congress Blue"],
-    ["024E46", "Evening Sea"],
-    ["026395", "Bahama Blue"],
-    ["02866F", "Observatory"],
-    ["02A4D3", "Cerulean"],
-    ["03163C", "Tangaroa"],
-    ["032B52", "Green Vogue"],
-    ["036A6E", "Mosque"],
-    ["041004", "Midnight Moss"],
-    ["041322", "Black Pearl"],
-    ["042E4C", "Blue Whale"],
-    ["044022", "Zuccini"],
-    ["044259", "Teal Blue"],
-    ["051040", "Deep Cove"],
-    ["051657", "Gulf Blue"],
-    ["055989", "Venice Blue"],
-    ["056F57", "Watercourse"],
-    ["062A78", "Catalina Blue"],
-    ["063537", "Tiber"],
-    ["069B81", "Gossamer"],
-    ["06A189", "Niagara"],
-    ["073A50", "Tarawera"],
-    ["080110", "Jaguar"],
-    ["081910", "Black Bean"],
-    ["082567", "Deep Sapphire"],
-    ["088370", "Elf Green"],
-    ["08E8DE", "Bright Turquoise"],
-    ["092256", "Downriver"],
-    ["09230F", "Palm Green"],
-    ["09255D", "Madison"],
-    ["093624", "Bottle Green"],
-    ["095859", "Deep Sea Green"],
-    ["097F4B", "Salem"],
-    ["0A001C", "Black Russian"],
-    ["0A480D", "Dark Fern"],
-    ["0A6906", "Japanese Laurel"],
-    ["0A6F75", "Atoll"],
-    ["0B0B0B", "Cod Gray"],
-    ["0B0F08", "Marshland"],
-    ["0B1107", "Gordons Green"],
-    ["0B1304", "Black Forest"],
-    ["0B6207", "San Felix"],
-    ["0BDA51", "Malachite"],
-    ["0C0B1D", "Ebony"],
-    ["0C0D0F", "Woodsmoke"],
-    ["0C1911", "Racing Green"],
-    ["0C7A79", "Surfie Green"],
-    ["0C8990", "Blue Chill"],
-    ["0D0332", "Black Rock"],
-    ["0D1117", "Bunker"],
-    ["0D1C19", "Aztec"],
-    ["0D2E1C", "Bush"],
-    ["0E0E18", "Cinder"],
-    ["0E2A30", "Firefly"],
-    ["0F2D9E", "Torea Bay"],
-    ["10121D", "Vulcan"],
-    ["101405", "Green Waterloo"],
-    ["105852", "Eden"],
-    ["110C6C", "Arapawa"],
-    ["120A8F", "Ultramarine"],
-    ["123447", "Elephant"],
-    ["126B40", "Jewel"],
-    ["130000", "Diesel"],
-    ["130A06", "Asphalt"],
-    ["13264D", "Blue Zodiac"],
-    ["134F19", "Parsley"],
-    ["140600", "Nero"],
-    ["1450AA", "Tory Blue"],
-    ["151F4C", "Bunting"],
-    ["1560BD", "Denim"],
-    ["15736B", "Genoa"],
-    ["161928", "Mirage"],
-    ["161D10", "Hunter Green"],
-    ["162A40", "Big Stone"],
-    ["163222", "Celtic"],
-    ["16322C", "Timber Green"],
-    ["163531", "Gable Green"],
-    ["171F04", "Pine Tree"],
-    ["175579", "Chathams Blue"],
-    ["182D09", "Deep Forest Green"],
-    ["18587A", "Blumine"],
-    ["19330E", "Palm Leaf"],
-    ["193751", "Nile Blue"],
-    ["1959A8", "Fun Blue"],
-    ["1A1A68", "Lucky Point"],
-    ["1AB385", "Mountain Meadow"],
-    ["1B0245", "Tolopea"],
-    ["1B1035", "Haiti"],
-    ["1B127B", "Deep Koamaru"],
-    ["1B1404", "Acadia"],
-    ["1B2F11", "Seaweed"],
-    ["1B3162", "Biscay"],
-    ["1B659D", "Matisse"],
-    ["1C1208", "Crowshead"],
-    ["1C1E13", "Rangoon Green"],
-    ["1C39BB", "Persian Blue"],
-    ["1C402E", "Everglade"],
-    ["1C7C7D", "Elm"],
-    ["1D6142", "Green Pea"],
-    ["1E0F04", "Creole"],
-    ["1E1609", "Karaka"],
-    ["1E1708", "El Paso"],
-    ["1E385B", "Cello"],
-    ["1E433C", "Te Papa Green"],
-    ["1E90FF", "Dodger Blue"],
-    ["1E9AB0", "Eastern Blue"],
-    ["1F120F", "Night Rider"],
-    ["1FC2C2", "Java"],
-    ["20208D", "Jacksons Purple"],
-    ["202E54", "Cloud Burst"],
-    ["204852", "Blue Dianne"],
-    ["211A0E", "Eternity"],
-    ["220878", "Deep Blue"],
-    ["228B22", "Forest Green"],
-    ["233418", "Mallard"],
-    ["240A40", "Violet"],
-    ["240C02", "Kilamanjaro"],
-    ["242A1D", "Log Cabin"],
-    ["242E16", "Black Olive"],
-    ["24500F", "Green House"],
-    ["251607", "Graphite"],
-    ["251706", "Cannon Black"],
-    ["251F4F", "Port Gore"],
-    ["25272C", "Shark"],
-    ["25311C", "Green Kelp"],
-    ["2596D1", "Curious Blue"],
-    ["260368", "Paua"],
-    ["26056A", "Paris M"],
-    ["261105", "Wood Bark"],
-    ["261414", "Gondola"],
-    ["262335", "Steel Gray"],
-    ["26283B", "Ebony Clay"],
-    ["273A81", "Bay of Many"],
-    ["27504B", "Plantation"],
-    ["278A5B", "Eucalyptus"],
-    ["281E15", "Oil"],
-    ["283A77", "Astronaut"],
-    ["286ACD", "Mariner"],
-    ["290C5E", "Violent Violet"],
-    ["292130", "Bastille"],
-    ["292319", "Zeus"],
-    ["292937", "Charade"],
-    ["297B9A", "Jelly Bean"],
-    ["29AB87", "Jungle Green"],
-    ["2A0359", "Cherry Pie"],
-    ["2A140E", "Coffee Bean"],
-    ["2A2630", "Baltic Sea"],
-    ["2A380B", "Turtle Green"],
-    ["2A52BE", "Cerulean Blue"],
-    ["2B0202", "Sepia Black"],
-    ["2B194F", "Valhalla"],
-    ["2B3228", "Heavy Metal"],
-    ["2C0E8C", "Blue Gem"],
-    ["2C1632", "Revolver"],
-    ["2C2133", "Bleached Cedar"],
-    ["2C8C84", "Lochinvar"],
-    ["2D2510", "Mikado"],
-    ["2D383A", "Outer Space"],
-    ["2D569B", "St Tropaz"],
-    ["2E0329", "Jacaranda"],
-    ["2E1905", "Jacko Bean"],
-    ["2E3222", "Rangitoto"],
-    ["2E3F62", "Rhino"],
-    ["2E8B57", "Sea Green"],
-    ["2EBFD4", "Scooter"],
-    ["2F270E", "Onion"],
-    ["2F3CB3", "Governor Bay"],
-    ["2F519E", "Sapphire"],
-    ["2F5A57", "Spectra"],
-    ["2F6168", "Casal"],
-    ["300529", "Melanzane"],
-    ["301F1E", "Cocoa Brown"],
-    ["302A0F", "Woodrush"],
-    ["304B6A", "San Juan"],
-    ["30D5C8", "Turquoise"],
-    ["311C17", "Eclipse"],
-    ["314459", "Pickled Bluewood"],
-    ["315BA1", "Azure"],
-    ["31728D", "Calypso"],
-    ["317D82", "Paradiso"],
-    ["32127A", "Persian Indigo"],
-    ["32293A", "Blackcurrant"],
-    ["323232", "Mine Shaft"],
-    ["325D52", "Stromboli"],
-    ["327C14", "Bilbao"],
-    ["327DA0", "Astral"],
-    ["33036B", "Christalle"],
-    ["33292F", "Thunder"],
-    ["33CC99", "Shamrock"],
-    ["341515", "Tamarind"],
-    ["350036", "Mardi Gras"],
-    ["350E42", "Valentino"],
-    ["350E57", "Jagger"],
-    ["353542", "Tuna"],
-    ["354E8C", "Chambray"],
-    ["363050", "Martinique"],
-    ["363534", "Tuatara"],
-    ["363C0D", "Waiouru"],
-    ["36747D", "Ming"],
-    ["368716", "La Palma"],
-    ["370202", "Chocolate"],
-    ["371D09", "Clinker"],
-    ["37290E", "Brown Tumbleweed"],
-    ["373021", "Birch"],
-    ["377475", "Oracle"],
-    ["380474", "Blue Diamond"],
-    ["381A51", "Grape"],
-    ["383533", "Dune"],
-    ["384555", "Oxford Blue"],
-    ["384910", "Clover"],
-    ["394851", "Limed Spruce"],
-    ["396413", "Dell"],
-    ["3A0020", "Toledo"],
-    ["3A2010", "Sambuca"],
-    ["3A2A6A", "Jacarta"],
-    ["3A686C", "William"],
-    ["3A6A47", "Killarney"],
-    ["3AB09E", "Keppel"],
-    ["3B000B", "Temptress"],
-    ["3B0910", "Aubergine"],
-    ["3B1F1F", "Jon"],
-    ["3B2820", "Treehouse"],
-    ["3B7A57", "Amazon"],
-    ["3B91B4", "Boston Blue"],
-    ["3C0878", "Windsor"],
-    ["3C1206", "Rebel"],
-    ["3C1F76", "Meteorite"],
-    ["3C2005", "Dark Ebony"],
-    ["3C3910", "Camouflage"],
-    ["3C4151", "Bright Gray"],
-    ["3C4443", "Cape Cod"],
-    ["3C493A", "Lunar Green"],
-    ["3D0C02", "Bean  "],
-    ["3D2B1F", "Bistre"],
-    ["3D7D52", "Goblin"],
-    ["3E0480", "Kingfisher Daisy"],
-    ["3E1C14", "Cedar"],
-    ["3E2B23", "English Walnut"],
-    ["3E2C1C", "Black Marlin"],
-    ["3E3A44", "Ship Gray"],
-    ["3EABBF", "Pelorous"],
-    ["3F2109", "Bronze"],
-    ["3F2500", "Cola"],
-    ["3F3002", "Madras"],
-    ["3F307F", "Minsk"],
-    ["3F4C3A", "Cabbage Pont"],
-    ["3F583B", "Tom Thumb"],
-    ["3F5D53", "Mineral Green"],
-    ["3FC1AA", "Puerto Rico"],
-    ["3FFF00", "Harlequin"],
-    ["401801", "Brown Pod"],
-    ["40291D", "Cork"],
-    ["403B38", "Masala"],
-    ["403D19", "Thatch Green"],
-    ["405169", "Fiord"],
-    ["40826D", "Viridian"],
-    ["40A860", "Chateau Green"],
-    ["410056", "Ripe Plum"],
-    ["411F10", "Paco"],
-    ["412010", "Deep Oak"],
-    ["413C37", "Merlin"],
-    ["414257", "Gun Powder"],
-    ["414C7D", "East Bay"],
-    ["4169E1", "Royal Blue"],
-    ["41AA78", "Ocean Green"],
-    ["420303", "Burnt Maroon"],
-    ["423921", "Lisbon Brown"],
-    ["427977", "Faded Jade"],
-    ["431560", "Scarlet Gum"],
-    ["433120", "Iroko"],
-    ["433E37", "Armadillo"],
-    ["434C59", "River Bed"],
-    ["436A0D", "Green Leaf"],
-    ["44012D", "Barossa"],
-    ["441D00", "Morocco Brown"],
-    ["444954", "Mako"],
-    ["454936", "Kelp"],
-    ["456CAC", "San Marino"],
-    ["45B1E8", "Picton Blue"],
-    ["460B41", "Loulou"],
-    ["462425", "Crater Brown"],
-    ["465945", "Gray Asparagus"],
-    ["4682B4", "Steel Blue"],
-    ["480404", "Rustic Red"],
-    ["480607", "Bulgarian Rose"],
-    ["480656", "Clairvoyant"],
-    ["481C1C", "Cocoa Bean"],
-    ["483131", "Woody Brown"],
-    ["483C32", "Taupe"],
-    ["49170C", "Van Cleef"],
-    ["492615", "Brown Derby"],
-    ["49371B", "Metallic Bronze"],
-    ["495400", "Verdun Green"],
-    ["496679", "Blue Bayoux"],
-    ["497183", "Bismark"],
-    ["4A2A04", "Bracken"],
-    ["4A3004", "Deep Bronze"],
-    ["4A3C30", "Mondo"],
-    ["4A4244", "Tundora"],
-    ["4A444B", "Gravel"],
-    ["4A4E5A", "Trout"],
-    ["4B0082", "Pigment Indigo"],
-    ["4B5D52", "Nandor"],
-    ["4C3024", "Saddle"],
-    ["4C4F56", "Abbey"],
-    ["4D0135", "Blackberry"],
-    ["4D0A18", "Cab Sav"],
-    ["4D1E01", "Indian Tan"],
-    ["4D282D", "Cowboy"],
-    ["4D282E", "Livid Brown"],
-    ["4D3833", "Rock"],
-    ["4D3D14", "Punga"],
-    ["4D400F", "Bronzetone"],
-    ["4D5328", "Woodland"],
-    ["4E0606", "Mahogany"],
-    ["4E2A5A", "Bossanova"],
-    ["4E3B41", "Matterhorn"],
-    ["4E420C", "Bronze Olive"],
-    ["4E4562", "Mulled Wine"],
-    ["4E6649", "Axolotl"],
-    ["4E7F9E", "Wedgewood"],
-    ["4EABD1", "Shakespeare"],
-    ["4F1C70", "Honey Flower"],
-    ["4F2398", "Daisy Bush"],
-    ["4F69C6", "Indigo"],
-    ["4F7942", "Fern Green"],
-    ["4F9D5D", "Fruit Salad"],
-    ["4FA83D", "Apple"],
-    ["504351", "Mortar"],
-    ["507096", "Kashmir Blue"],
-    ["507672", "Cutty Sark"],
-    ["50C878", "Emerald"],
-    ["514649", "Emperor"],
-    ["516E3D", "Chalet Green"],
-    ["517C66", "Como"],
-    ["51808F", "Smalt Blue"],
-    ["52001F", "Castro"],
-    ["520C17", "Maroon Oak"],
-    ["523C94", "Gigas"],
-    ["533455", "Voodoo"],
-    ["534491", "Victoria"],
-    ["53824B", "Hippie Green"],
-    ["541012", "Heath"],
-    ["544333", "Judge Gray"],
-    ["54534D", "Fuscous Gray"],
-    ["549019", "Vida Loca"],
-    ["55280C", "Cioccolato"],
-    ["555B10", "Saratoga"],
-    ["556D56", "Finlandia"],
-    ["5590D9", "Havelock Blue"],
-    ["56B4BE", "Fountain Blue"],
-    ["578363", "Spring Leaves"],
-    ["583401", "Saddle Brown"],
-    ["585562", "Scarpa Flow"],
-    ["587156", "Cactus"],
-    ["589AAF", "Hippie Blue"],
-    ["591D35", "Wine Berry"],
-    ["592804", "Brown Bramble"],
-    ["593737", "Congo Brown"],
-    ["594433", "Millbrook"],
-    ["5A6E9C", "Waikawa Gray"],
-    ["5A87A0", "Horizon"],
-    ["5B3013", "Jambalaya"],
-    ["5C0120", "Bordeaux"],
-    ["5C0536", "Mulberry Wood"],
-    ["5C2E01", "Carnaby Tan"],
-    ["5C5D75", "Comet"],
-    ["5D1E0F", "Redwood"],
-    ["5D4C51", "Don Juan"],
-    ["5D5C58", "Chicago"],
-    ["5D5E37", "Verdigris"],
-    ["5D7747", "Dingley"],
-    ["5DA19F", "Breaker Bay"],
-    ["5E483E", "Kabul"],
-    ["5E5D3B", "Hemlock"],
-    ["5F3D26", "Irish Coffee"],
-    ["5F5F6E", "Mid Gray"],
-    ["5F6672", "Shuttle Gray"],
-    ["5FA777", "Aqua Forest"],
-    ["5FB3AC", "Tradewind"],
-    ["604913", "Horses Neck"],
-    ["605B73", "Smoky"],
-    ["606E68", "Corduroy"],
-    ["6093D1", "Danube"],
-    ["612718", "Espresso"],
-    ["614051", "Eggplant"],
-    ["615D30", "Costa Del Sol"],
-    ["61845F", "Glade Green"],
-    ["622F30", "Buccaneer"],
-    ["623F2D", "Quincy"],
-    ["624E9A", "Butterfly Bush"],
-    ["625119", "West Coast"],
-    ["626649", "Finch"],
-    ["639A8F", "Patina"],
-    ["63B76C", "Fern"],
-    ["6456B7", "Blue Violet"],
-    ["646077", "Dolphin"],
-    ["646463", "Storm Dust"],
-    ["646A54", "Siam"],
-    ["646E75", "Nevada"],
-    ["6495ED", "Cornflower Blue"],
-    ["64CCDB", "Viking"],
-    ["65000B", "Rosewood"],
-    ["651A14", "Cherrywood"],
-    ["652DC1", "Purple Heart"],
-    ["657220", "Fern Frond"],
-    ["65745D", "Willow Grove"],
-    ["65869F", "Hoki"],
-    ["660045", "Pompadour"],
-    ["660099", "Purple"],
-    ["66023C", "Tyrian Purple"],
-    ["661010", "Dark Tan"],
-    ["66B58F", "Silver Tree"],
-    ["66FF00", "Bright Green"],
-    ["66FF66", "Screamin' Green"],
-    ["67032D", "Black Rose"],
-    ["675FA6", "Scampi"],
-    ["676662", "Ironside Gray"],
-    ["678975", "Viridian Green"],
-    ["67A712", "Christi"],
-    ["683600", "Nutmeg Wood Finish"],
-    ["685558", "Zambezi"],
-    ["685E6E", "Salt Box"],
-    ["692545", "Tawny Port"],
-    ["692D54", "Finn"],
-    ["695F62", "Scorpion"],
-    ["697E9A", "Lynch"],
-    ["6A442E", "Spice"],
-    ["6A5D1B", "Himalaya"],
-    ["6A6051", "Soya Bean"],
-    ["6B2A14", "Hairy Heath"],
-    ["6B3FA0", "Royal Purple"],
-    ["6B4E31", "Shingle Fawn"],
-    ["6B5755", "Dorado"],
-    ["6B8BA2", "Bermuda Gray"],
-    ["6B8E23", "Olive Drab"],
-    ["6C3082", "Eminence"],
-    ["6CDAE7", "Turquoise Blue"],
-    ["6D0101", "Lonestar"],
-    ["6D5E54", "Pine Cone"],
-    ["6D6C6C", "Dove Gray"],
-    ["6D9292", "Juniper"],
-    ["6D92A1", "Gothic"],
-    ["6E0902", "Red Oxide"],
-    ["6E1D14", "Moccaccino"],
-    ["6E4826", "Pickled Bean"],
-    ["6E4B26", "Dallas"],
-    ["6E6D57", "Kokoda"],
-    ["6E7783", "Pale Sky"],
-    ["6F440C", "Cafe Royale"],
-    ["6F6A61", "Flint"],
-    ["6F8E63", "Highland"],
-    ["6F9D02", "Limeade"],
-    ["6FD0C5", "Downy"],
-    ["701C1C", "Persian Plum"],
-    ["704214", "Sepia"],
-    ["704A07", "Antique Bronze"],
-    ["704F50", "Ferra"],
-    ["706555", "Coffee"],
-    ["708090", "Slate Gray"],
-    ["711A00", "Cedar Wood Finish"],
-    ["71291D", "Metallic Copper"],
-    ["714693", "Affair"],
-    ["714AB2", "Studio"],
-    ["715D47", "Tobacco Brown"],
-    ["716338", "Yellow Metal"],
-    ["716B56", "Peat"],
-    ["716E10", "Olivetone"],
-    ["717486", "Storm Gray"],
-    ["718080", "Sirocco"],
-    ["71D9E2", "Aquamarine Blue"],
-    ["72010F", "Venetian Red"],
-    ["724A2F", "Old Copper"],
-    ["726D4E", "Go Ben"],
-    ["727B89", "Raven"],
-    ["731E8F", "Seance"],
-    ["734A12", "Raw Umber"],
-    ["736C9F", "Kimberly"],
-    ["736D58", "Crocodile"],
-    ["737829", "Crete"],
-    ["738678", "Xanadu"],
-    ["74640D", "Spicy Mustard"],
-    ["747D63", "Limed Ash"],
-    ["747D83", "Rolling Stone"],
-    ["748881", "Blue Smoke"],
-    ["749378", "Laurel"],
-    ["74C365", "Mantis"],
-    ["755A57", "Russett"],
-    ["7563A8", "Deluge"],
-    ["76395D", "Cosmic"],
-    ["7666C6", "Blue Marguerite"],
-    ["76BD17", "Lima"],
-    ["76D7EA", "Sky Blue"],
-    ["770F05", "Dark Burgundy"],
-    ["771F1F", "Crown of Thorns"],
-    ["773F1A", "Walnut"],
-    ["776F61", "Pablo"],
-    ["778120", "Pacifika"],
-    ["779E86", "Oxley"],
-    ["77DD77", "Pastel Green"],
-    ["780109", "Japanese Maple"],
-    ["782D19", "Mocha"],
-    ["782F16", "Peanut"],
-    ["78866B", "Camouflage Green"],
-    ["788A25", "Wasabi"],
-    ["788BBA", "Ship Cove"],
-    ["78A39C", "Sea Nymph"],
-    ["795D4C", "Roman Coffee"],
-    ["796878", "Old Lavender"],
-    ["796989", "Rum"],
-    ["796A78", "Fedora"],
-    ["796D62", "Sandstone"],
-    ["79DEEC", "Spray"],
-    ["7A013A", "Siren"],
-    ["7A58C1", "Fuchsia Blue"],
-    ["7A7A7A", "Boulder"],
-    ["7A89B8", "Wild Blue Yonder"],
-    ["7AC488", "De York"],
-    ["7B3801", "Red Beech"],
-    ["7B3F00", "Cinnamon"],
-    ["7B6608", "Yukon Gold"],
-    ["7B7874", "Tapa"],
-    ["7B7C94", "Waterloo "],
-    ["7B8265", "Flax Smoke"],
-    ["7B9F80", "Amulet"],
-    ["7BA05B", "Asparagus"],
-    ["7C1C05", "Kenyan Copper"],
-    ["7C7631", "Pesto"],
-    ["7C778A", "Topaz"],
-    ["7C7B7A", "Concord"],
-    ["7C7B82", "Jumbo"],
-    ["7C881A", "Trendy Green"],
-    ["7CA1A6", "Gumbo"],
-    ["7CB0A1", "Acapulco"],
-    ["7CB7BB", "Neptune"],
-    ["7D2C14", "Pueblo"],
-    ["7DA98D", "Bay Leaf"],
-    ["7DC8F7", "Malibu"],
-    ["7DD8C6", "Bermuda"],
-    ["7E3A15", "Copper Canyon"],
-    ["7F1734", "Claret"],
-    ["7F3A02", "Peru Tan"],
-    ["7F626D", "Falcon"],
-    ["7F7589", "Mobster"],
-    ["7F76D3", "Moody Blue"],
-    ["7FFF00", "Chartreuse"],
-    ["7FFFD4", "Aquamarine"],
-    ["800000", "Maroon"],
-    ["800B47", "Rose Bud Cherry"],
-    ["801818", "Falu Red"],
-    ["80341F", "Red Robin"],
-    ["803790", "Vivid Violet"],
-    ["80461B", "Russet"],
-    ["807E79", "Friar Gray"],
-    ["808000", "Olive"],
-    ["808080", "Gray"],
-    ["80B3AE", "Gulf Stream"],
-    ["80B3C4", "Glacier"],
-    ["80CCEA", "Seagull"],
-    ["81422C", "Nutmeg"],
-    ["816E71", "Spicy Pink"],
-    ["817377", "Empress"],
-    ["819885", "Spanish Green"],
-    ["826F65", "Sand Dune"],
-    ["828685", "Gunsmoke"],
-    ["828F72", "Battleship Gray"],
-    ["831923", "Merlot"],
-    ["837050", "Shadow"],
-    ["83AA5D", "Chelsea Cucumber"],
-    ["83D0C6", "Monte Carlo"],
-    ["843179", "Plum"],
-    ["84A0A0", "Granny Smith"],
-    ["8581D9", "Chetwode Blue"],
-    ["858470", "Bandicoot"],
-    ["859FAF", "Bali Hai"],
-    ["85C4CC", "Half Baked"],
-    ["860111", "Red Devil"],
-    ["863C3C", "Lotus"],
-    ["86483C", "Ironstone"],
-    ["864D1E", "Bull Shot"],
-    ["86560A", "Rusty Nail"],
-    ["868974", "Bitter"],
-    ["86949F", "Regent Gray"],
-    ["871550", "Disco"],
-    ["87756E", "Americano"],
-    ["877C7B", "Hurricane"],
-    ["878D91", "Oslo Gray"],
-    ["87AB39", "Sushi"],
-    ["885342", "Spicy Mix"],
-    ["886221", "Kumera"],
-    ["888387", "Suva Gray"],
-    ["888D65", "Avocado"],
-    ["893456", "Camelot"],
-    ["893843", "Solid Pink"],
-    ["894367", "Cannon Pink"],
-    ["897D6D", "Makara"],
-    ["8A3324", "Burnt Umber"],
-    ["8A73D6", "True V"],
-    ["8A8360", "Clay Creek"],
-    ["8A8389", "Monsoon"],
-    ["8A8F8A", "Stack"],
-    ["8AB9F1", "Jordy Blue"],
-    ["8B00FF", "Electric Violet"],
-    ["8B0723", "Monarch"],
-    ["8B6B0B", "Corn Harvest"],
-    ["8B8470", "Olive Haze"],
-    ["8B847E", "Schooner"],
-    ["8B8680", "Natural Gray"],
-    ["8B9C90", "Mantle"],
-    ["8B9FEE", "Portage"],
-    ["8BA690", "Envy"],
-    ["8BA9A5", "Cascade"],
-    ["8BE6D8", "Riptide"],
-    ["8C055E", "Cardinal Pink"],
-    ["8C472F", "Mule Fawn"],
-    ["8C5738", "Potters Clay"],
-    ["8C6495", "Trendy Pink"],
-    ["8D0226", "Paprika"],
-    ["8D3D38", "Sanguine Brown"],
-    ["8D3F3F", "Tosca"],
-    ["8D7662", "Cement"],
-    ["8D8974", "Granite Green"],
-    ["8D90A1", "Manatee"],
-    ["8DA8CC", "Polo Blue"],
-    ["8E0000", "Red Berry"],
-    ["8E4D1E", "Rope"],
-    ["8E6F70", "Opium"],
-    ["8E775E", "Domino"],
-    ["8E8190", "Mamba"],
-    ["8EABC1", "Nepal"],
-    ["8F021C", "Pohutukawa"],
-    ["8F3E33", "El Salva"],
-    ["8F4B0E", "Korma"],
-    ["8F8176", "Squirrel"],
-    ["8FD6B4", "Vista Blue"],
-    ["900020", "Burgundy"],
-    ["901E1E", "Old Brick"],
-    ["907874", "Hemp"],
-    ["907B71", "Almond Frost"],
-    ["908D39", "Sycamore"],
-    ["92000A", "Sangria"],
-    ["924321", "Cumin"],
-    ["926F5B", "Beaver"],
-    ["928573", "Stonewall"],
-    ["928590", "Venus"],
-    ["9370DB", "Medium Purple"],
-    ["93CCEA", "Cornflower"],
-    ["93DFB8", "Algae Green"],
-    ["944747", "Copper Rust"],
-    ["948771", "Arrowtown"],
-    ["950015", "Scarlett"],
-    ["956387", "Strikemaster"],
-    ["959396", "Mountain Mist"],
-    ["960018", "Carmine"],
-    ["964B00", "Brown"],
-    ["967059", "Leather"],
-    ["9678B6", "Purple Mountain's Majesty"],
-    ["967BB6", "Lavender Purple"],
-    ["96A8A1", "Pewter"],
-    ["96BBAB", "Summer Green"],
-    ["97605D", "Au Chico"],
-    ["9771B5", "Wisteria"],
-    ["97CD2D", "Atlantis"],
-    ["983D61", "Vin Rouge"],
-    ["9874D3", "Lilac Bush"],
-    ["98777B", "Bazaar"],
-    ["98811B", "Hacienda"],
-    ["988D77", "Pale Oyster"],
-    ["98FF98", "Mint Green"],
-    ["990066", "Fresh Eggplant"],
-    ["991199", "Violet Eggplant"],
-    ["991613", "Tamarillo"],
-    ["991B07", "Totem Pole"],
-    ["996666", "Copper Rose"],
-    ["9966CC", "Amethyst"],
-    ["997A8D", "Mountbatten Pink"],
-    ["9999CC", "Blue Bell"],
-    ["9A3820", "Prairie Sand"],
-    ["9A6E61", "Toast"],
-    ["9A9577", "Gurkha"],
-    ["9AB973", "Olivine"],
-    ["9AC2B8", "Shadow Green"],
-    ["9B4703", "Oregon"],
-    ["9B9E8F", "Lemon Grass"],
-    ["9C3336", "Stiletto"],
-    ["9D5616", "Hawaiian Tan"],
-    ["9DACB7", "Gull Gray"],
-    ["9DC209", "Pistachio"],
-    ["9DE093", "Granny Smith Apple"],
-    ["9DE5FF", "Anakiwa"],
-    ["9E5302", "Chelsea Gem"],
-    ["9E5B40", "Sepia Skin"],
-    ["9EA587", "Sage"],
-    ["9EA91F", "Citron"],
-    ["9EB1CD", "Rock Blue"],
-    ["9EDEE0", "Morning Glory"],
-    ["9F381D", "Cognac"],
-    ["9F821C", "Reef Gold"],
-    ["9F9F9C", "Star Dust"],
-    ["9FA0B1", "Santas Gray"],
-    ["9FD7D3", "Sinbad"],
-    ["9FDD8C", "Feijoa"],
-    ["A02712", "Tabasco"],
-    ["A1750D", "Buttered Rum"],
-    ["A1ADB5", "Hit Gray"],
-    ["A1C50A", "Citrus"],
-    ["A1DAD7", "Aqua Island"],
-    ["A1E9DE", "Water Leaf"],
-    ["A2006D", "Flirt"],
-    ["A23B6C", "Rouge"],
-    ["A26645", "Cape Palliser"],
-    ["A2AAB3", "Gray Chateau"],
-    ["A2AEAB", "Edward"],
-    ["A3807B", "Pharlap"],
-    ["A397B4", "Amethyst Smoke"],
-    ["A3E3ED", "Blizzard Blue"],
-    ["A4A49D", "Delta"],
-    ["A4A6D3", "Wistful"],
-    ["A4AF6E", "Green Smoke"],
-    ["A50B5E", "Jazzberry Jam"],
-    ["A59B91", "Zorba"],
-    ["A5CB0C", "Bahia"],
-    ["A62F20", "Roof Terracotta"],
-    ["A65529", "Paarl"],
-    ["A68B5B", "Barley Corn"],
-    ["A69279", "Donkey Brown"],
-    ["A6A29A", "Dawn"],
-    ["A72525", "Mexican Red"],
-    ["A7882C", "Luxor Gold"],
-    ["A85307", "Rich Gold"],
-    ["A86515", "Reno Sand"],
-    ["A86B6B", "Coral Tree"],
-    ["A8989B", "Dusty Gray"],
-    ["A899E6", "Dull Lavender"],
-    ["A8A589", "Tallow"],
-    ["A8AE9C", "Bud"],
-    ["A8AF8E", "Locust"],
-    ["A8BD9F", "Norway"],
-    ["A8E3BD", "Chinook"],
-    ["A9A491", "Gray Olive"],
-    ["A9ACB6", "Aluminium"],
-    ["A9B2C3", "Cadet Blue"],
-    ["A9B497", "Schist"],
-    ["A9BDBF", "Tower Gray"],
-    ["A9BEF2", "Perano"],
-    ["A9C6C2", "Opal"],
-    ["AA375A", "Night Shadz"],
-    ["AA4203", "Fire"],
-    ["AA8B5B", "Muesli"],
-    ["AA8D6F", "Sandal"],
-    ["AAA5A9", "Shady Lady"],
-    ["AAA9CD", "Logan"],
-    ["AAABB7", "Spun Pearl"],
-    ["AAD6E6", "Regent St Blue"],
-    ["AAF0D1", "Magic Mint"],
-    ["AB0563", "Lipstick"],
-    ["AB3472", "Royal Heath"],
-    ["AB917A", "Sandrift"],
-    ["ABA0D9", "Cold Purple"],
-    ["ABA196", "Bronco"],
-    ["AC8A56", "Limed Oak"],
-    ["AC91CE", "East Side"],
-    ["AC9E22", "Lemon Ginger"],
-    ["ACA494", "Napa"],
-    ["ACA586", "Hillary"],
-    ["ACA59F", "Cloudy"],
-    ["ACACAC", "Silver Chalice"],
-    ["ACB78E", "Swamp Green"],
-    ["ACCBB1", "Spring Rain"],
-    ["ACDD4D", "Conifer"],
-    ["ACE1AF", "Celadon"],
-    ["AD781B", "Mandalay"],
-    ["ADBED1", "Casper"],
-    ["ADDFAD", "Moss Green"],
-    ["ADE6C4", "Padua"],
-    ["ADFF2F", "Green Yellow"],
-    ["AE4560", "Hippie Pink"],
-    ["AE6020", "Desert"],
-    ["AE809E", "Bouquet"],
-    ["AF4035", "Medium Carmine"],
-    ["AF4D43", "Apple Blossom"],
-    ["AF593E", "Brown Rust"],
-    ["AF8751", "Driftwood"],
-    ["AF8F2C", "Alpine"],
-    ["AF9F1C", "Lucky"],
-    ["AFA09E", "Martini"],
-    ["AFB1B8", "Bombay"],
-    ["AFBDD9", "Pigeon Post"],
-    ["B04C6A", "Cadillac"],
-    ["B05D54", "Matrix"],
-    ["B05E81", "Tapestry"],
-    ["B06608", "Mai Tai"],
-    ["B09A95", "Del Rio"],
-    ["B0E0E6", "Powder Blue"],
-    ["B0E313", "Inch Worm"],
-    ["B10000", "Bright Red"],
-    ["B14A0B", "Vesuvius"],
-    ["B1610B", "Pumpkin Skin"],
-    ["B16D52", "Santa Fe"],
-    ["B19461", "Teak"],
-    ["B1E2C1", "Fringy Flower"],
-    ["B1F4E7", "Ice Cold"],
-    ["B20931", "Shiraz"],
-    ["B2A1EA", "Biloba Flower"],
-    ["B32D29", "Tall Poppy"],
-    ["B35213", "Fiery Orange"],
-    ["B38007", "Hot Toddy"],
-    ["B3AF95", "Taupe Gray"],
-    ["B3C110", "La Rioja"],
-    ["B43332", "Well Read"],
-    ["B44668", "Blush"],
-    ["B4CFD3", "Jungle Mist"],
-    ["B57281", "Turkish Rose"],
-    ["B57EDC", "Lavender"],
-    ["B5A27F", "Mongoose"],
-    ["B5B35C", "Olive Green"],
-    ["B5D2CE", "Jet Stream"],
-    ["B5ECDF", "Cruise"],
-    ["B6316C", "Hibiscus"],
-    ["B69D98", "Thatch"],
-    ["B6B095", "Heathered Gray"],
-    ["B6BAA4", "Eagle"],
-    ["B6D1EA", "Spindle"],
-    ["B6D3BF", "Gum Leaf"],
-    ["B7410E", "Rust"],
-    ["B78E5C", "Muddy Waters"],
-    ["B7A214", "Sahara"],
-    ["B7A458", "Husk"],
-    ["B7B1B1", "Nobel"],
-    ["B7C3D0", "Heather"],
-    ["B7F0BE", "Madang"],
-    ["B81104", "Milano Red"],
-    ["B87333", "Copper"],
-    ["B8B56A", "Gimblet"],
-    ["B8C1B1", "Green Spring"],
-    ["B8C25D", "Celery"],
-    ["B8E0F9", "Sail"],
-    ["B94E48", "Chestnut"],
-    ["B95140", "Crail"],
-    ["B98D28", "Marigold"],
-    ["B9C46A", "Wild Willow"],
-    ["B9C8AC", "Rainee"],
-    ["BA0101", "Guardsman Red"],
-    ["BA450C", "Rock Spray"],
-    ["BA6F1E", "Bourbon"],
-    ["BA7F03", "Pirate Gold"],
-    ["BAB1A2", "Nomad"],
-    ["BAC7C9", "Submarine"],
-    ["BAEEF9", "Charlotte"],
-    ["BB3385", "Medium Red Violet"],
-    ["BB8983", "Brandy Rose"],
-    ["BBD009", "Rio Grande"],
-    ["BBD7C1", "Surf"],
-    ["BCC9C2", "Powder Ash"],
-    ["BD5E2E", "Tuscany"],
-    ["BD978E", "Quicksand"],
-    ["BDB1A8", "Silk"],
-    ["BDB2A1", "Malta"],
-    ["BDB3C7", "Chatelle"],
-    ["BDBBD7", "Lavender Gray"],
-    ["BDBDC6", "French Gray"],
-    ["BDC8B3", "Clay Ash"],
-    ["BDC9CE", "Loblolly"],
-    ["BDEDFD", "French Pass"],
-    ["BEA6C3", "London Hue"],
-    ["BEB5B7", "Pink Swan"],
-    ["BEDE0D", "Fuego"],
-    ["BF5500", "Rose of Sharon"],
-    ["BFB8B0", "Tide"],
-    ["BFBED8", "Blue Haze"],
-    ["BFC1C2", "Silver Sand"],
-    ["BFC921", "Key Lime Pie"],
-    ["BFDBE2", "Ziggurat"],
-    ["BFFF00", "Lime"],
-    ["C02B18", "Thunderbird"],
-    ["C04737", "Mojo"],
-    ["C08081", "Old Rose"],
-    ["C0C0C0", "Silver"],
-    ["C0D3B9", "Pale Leaf"],
-    ["C0D8B6", "Pixie Green"],
-    ["C1440E", "Tia Maria"],
-    ["C154C1", "Fuchsia Pink"],
-    ["C1A004", "Buddha Gold"],
-    ["C1B7A4", "Bison Hide"],
-    ["C1BAB0", "Tea"],
-    ["C1BECD", "Gray Suit"],
-    ["C1D7B0", "Sprout"],
-    ["C1F07C", "Sulu"],
-    ["C26B03", "Indochine"],
-    ["C2955D", "Twine"],
-    ["C2BDB6", "Cotton Seed"],
-    ["C2CAC4", "Pumice"],
-    ["C2E8E5", "Jagged Ice"],
-    ["C32148", "Maroon Flush"],
-    ["C3B091", "Indian Khaki"],
-    ["C3BFC1", "Pale Slate"],
-    ["C3C3BD", "Gray Nickel"],
-    ["C3CDE6", "Periwinkle Gray"],
-    ["C3D1D1", "Tiara"],
-    ["C3DDF9", "Tropical Blue"],
-    ["C41E3A", "Cardinal"],
-    ["C45655", "Fuzzy Wuzzy Brown"],
-    ["C45719", "Orange Roughy"],
-    ["C4C4BC", "Mist Gray"],
-    ["C4D0B0", "Coriander"],
-    ["C4F4EB", "Mint Tulip"],
-    ["C54B8C", "Mulberry"],
-    ["C59922", "Nugget"],
-    ["C5994B", "Tussock"],
-    ["C5DBCA", "Sea Mist"],
-    ["C5E17A", "Yellow Green"],
-    ["C62D42", "Brick Red"],
-    ["C6726B", "Contessa"],
-    ["C69191", "Oriental Pink"],
-    ["C6A84B", "Roti"],
-    ["C6C3B5", "Ash"],
-    ["C6C8BD", "Kangaroo"],
-    ["C6E610", "Las Palmas"],
-    ["C7031E", "Monza"],
-    ["C71585", "Red Violet"],
-    ["C7BCA2", "Coral Reef"],
-    ["C7C1FF", "Melrose"],
-    ["C7C4BF", "Cloud"],
-    ["C7C9D5", "Ghost"],
-    ["C7CD90", "Pine Glade"],
-    ["C7DDE5", "Botticelli"],
-    ["C88A65", "Antique Brass"],
-    ["C8A2C8", "Lilac"],
-    ["C8A528", "Hokey Pokey"],
-    ["C8AABF", "Lily"],
-    ["C8B568", "Laser"],
-    ["C8E3D7", "Edgewater"],
-    ["C96323", "Piper"],
-    ["C99415", "Pizza"],
-    ["C9A0DC", "Light Wisteria"],
-    ["C9B29B", "Rodeo Dust"],
-    ["C9B35B", "Sundance"],
-    ["C9B93B", "Earls Green"],
-    ["C9C0BB", "Silver Rust"],
-    ["C9D9D2", "Conch"],
-    ["C9FFA2", "Reef"],
-    ["C9FFE5", "Aero Blue"],
-    ["CA3435", "Flush Mahogany"],
-    ["CABB48", "Turmeric"],
-    ["CADCD4", "Paris White"],
-    ["CAE00D", "Bitter Lemon"],
-    ["CAE6DA", "Skeptic"],
-    ["CB8FA9", "Viola"],
-    ["CBCAB6", "Foggy Gray"],
-    ["CBD3B0", "Green Mist"],
-    ["CBDBD6", "Nebula"],
-    ["CC3333", "Persian Red"],
-    ["CC5500", "Burnt Orange"],
-    ["CC7722", "Ochre"],
-    ["CC8899", "Puce"],
-    ["CCCAA8", "Thistle Green"],
-    ["CCCCFF", "Periwinkle"],
-    ["CCFF00", "Electric Lime"],
-    ["CD5700", "Tenn"],
-    ["CD5C5C", "Chestnut Rose"],
-    ["CD8429", "Brandy Punch"],
-    ["CDF4FF", "Onahau"],
-    ["CEB98F", "Sorrell Brown"],
-    ["CEBABA", "Cold Turkey"],
-    ["CEC291", "Yuma"],
-    ["CEC7A7", "Chino"],
-    ["CFA39D", "Eunry"],
-    ["CFB53B", "Old Gold"],
-    ["CFDCCF", "Tasman"],
-    ["CFE5D2", "Surf Crest"],
-    ["CFF9F3", "Humming Bird"],
-    ["CFFAF4", "Scandal"],
-    ["D05F04", "Red Stage"],
-    ["D06DA1", "Hopbush"],
-    ["D07D12", "Meteor"],
-    ["D0BEF8", "Perfume"],
-    ["D0C0E5", "Prelude"],
-    ["D0F0C0", "Tea Green"],
-    ["D18F1B", "Geebung"],
-    ["D1BEA8", "Vanilla"],
-    ["D1C6B4", "Soft Amber"],
-    ["D1D2CA", "Celeste"],
-    ["D1D2DD", "Mischka"],
-    ["D1E231", "Pear"],
-    ["D2691E", "Hot Cinnamon"],
-    ["D27D46", "Raw Sienna"],
-    ["D29EAA", "Careys Pink"],
-    ["D2B48C", "Tan"],
-    ["D2DA97", "Deco"],
-    ["D2F6DE", "Blue Romance"],
-    ["D2F8B0", "Gossip"],
-    ["D3CBBA", "Sisal"],
-    ["D3CDC5", "Swirl"],
-    ["D47494", "Charm"],
-    ["D4B6AF", "Clam Shell"],
-    ["D4BF8D", "Straw"],
-    ["D4C4A8", "Akaroa"],
-    ["D4CD16", "Bird Flower"],
-    ["D4D7D9", "Iron"],
-    ["D4DFE2", "Geyser"],
-    ["D4E2FC", "Hawkes Blue"],
-    ["D54600", "Grenadier"],
-    ["D591A4", "Can Can"],
-    ["D59A6F", "Whiskey"],
-    ["D5D195", "Winter Hazel"],
-    ["D5F6E3", "Granny Apple"],
-    ["D69188", "My Pink"],
-    ["D6C562", "Tacha"],
-    ["D6CEF6", "Moon Raker"],
-    ["D6D6D1", "Quill Gray"],
-    ["D6FFDB", "Snowy Mint"],
-    ["D7837F", "New York Pink"],
-    ["D7C498", "Pavlova"],
-    ["D7D0FF", "Fog"],
-    ["D84437", "Valencia"],
-    ["D87C63", "Japonica"],
-    ["D8BFD8", "Thistle"],
-    ["D8C2D5", "Maverick"],
-    ["D8FCFA", "Foam"],
-    ["D94972", "Cabaret"],
-    ["D99376", "Burning Sand"],
-    ["D9B99B", "Cameo"],
-    ["D9D6CF", "Timberwolf"],
-    ["D9DCC1", "Tana"],
-    ["D9E4F5", "Link Water"],
-    ["D9F7FF", "Mabel"],
-    ["DA3287", "Cerise"],
-    ["DA5B38", "Flame Pea"],
-    ["DA6304", "Bamboo"],
-    ["DA6A41", "Red Damask"],
-    ["DA70D6", "Orchid"],
-    ["DA8A67", "Copperfield"],
-    ["DAA520", "Golden Grass"],
-    ["DAECD6", "Zanah"],
-    ["DAF4F0", "Iceberg"],
-    ["DAFAFF", "Oyster Bay"],
-    ["DB5079", "Cranberry"],
-    ["DB9690", "Petite Orchid"],
-    ["DB995E", "Di Serria"],
-    ["DBDBDB", "Alto"],
-    ["DBFFF8", "Frosted Mint"],
-    ["DC143C", "Crimson"],
-    ["DC4333", "Punch"],
-    ["DCB20C", "Galliano"],
-    ["DCB4BC", "Blossom"],
-    ["DCD747", "Wattle"],
-    ["DCD9D2", "Westar"],
-    ["DCDDCC", "Moon Mist"],
-    ["DCEDB4", "Caper"],
-    ["DCF0EA", "Swans Down"],
-    ["DDD6D5", "Swiss Coffee"],
-    ["DDF9F1", "White Ice"],
-    ["DE3163", "Cerise Red"],
-    ["DE6360", "Roman"],
-    ["DEA681", "Tumbleweed"],
-    ["DEBA13", "Gold Tips"],
-    ["DEC196", "Brandy"],
-    ["DECBC6", "Wafer"],
-    ["DED4A4", "Sapling"],
-    ["DED717", "Barberry"],
-    ["DEE5C0", "Beryl Green"],
-    ["DEF5FF", "Pattens Blue"],
-    ["DF73FF", "Heliotrope"],
-    ["DFBE6F", "Apache"],
-    ["DFCD6F", "Chenin"],
-    ["DFCFDB", "Lola"],
-    ["DFECDA", "Willow Brook"],
-    ["DFFF00", "Chartreuse Yellow"],
-    ["E0B0FF", "Mauve"],
-    ["E0B646", "Anzac"],
-    ["E0B974", "Harvest Gold"],
-    ["E0C095", "Calico"],
-    ["E0FFFF", "Baby Blue"],
-    ["E16865", "Sunglo"],
-    ["E1BC64", "Equator"],
-    ["E1C0C8", "Pink Flare"],
-    ["E1E6D6", "Periglacial Blue"],
-    ["E1EAD4", "Kidnapper"],
-    ["E1F6E8", "Tara"],
-    ["E25465", "Mandy"],
-    ["E2725B", "Terracotta"],
-    ["E28913", "Golden Bell"],
-    ["E292C0", "Shocking"],
-    ["E29418", "Dixie"],
-    ["E29CD2", "Light Orchid"],
-    ["E2D8ED", "Snuff"],
-    ["E2EBED", "Mystic"],
-    ["E2F3EC", "Apple Green"],
-    ["E30B5C", "Razzmatazz"],
-    ["E32636", "Alizarin Crimson"],
-    ["E34234", "Cinnabar"],
-    ["E3BEBE", "Cavern Pink"],
-    ["E3F5E1", "Peppermint"],
-    ["E3F988", "Mindaro"],
-    ["E47698", "Deep Blush"],
-    ["E49B0F", "Gamboge"],
-    ["E4C2D5", "Melanie"],
-    ["E4CFDE", "Twilight"],
-    ["E4D1C0", "Bone"],
-    ["E4D422", "Sunflower"],
-    ["E4D5B7", "Grain Brown"],
-    ["E4D69B", "Zombie"],
-    ["E4F6E7", "Frostee"],
-    ["E4FFD1", "Snow Flurry"],
-    ["E52B50", "Amaranth"],
-    ["E5841B", "Zest"],
-    ["E5CCC9", "Dust Storm"],
-    ["E5D7BD", "Stark White"],
-    ["E5D8AF", "Hampton"],
-    ["E5E0E1", "Bon Jour"],
-    ["E5E5E5", "Mercury"],
-    ["E5F9F6", "Polar"],
-    ["E64E03", "Trinidad"],
-    ["E6BE8A", "Gold Sand"],
-    ["E6BEA5", "Cashmere"],
-    ["E6D7B9", "Double Spanish White"],
-    ["E6E4D4", "Satin Linen"],
-    ["E6F2EA", "Harp"],
-    ["E6F8F3", "Off Green"],
-    ["E6FFE9", "Hint of Green"],
-    ["E6FFFF", "Tranquil"],
-    ["E77200", "Mango Tango"],
-    ["E7730A", "Christine"],
-    ["E79F8C", "Tonys Pink"],
-    ["E79FC4", "Kobi"],
-    ["E7BCB4", "Rose Fog"],
-    ["E7BF05", "Corn"],
-    ["E7CD8C", "Putty"],
-    ["E7ECE6", "Gray Nurse"],
-    ["E7F8FF", "Lily White"],
-    ["E7FEFF", "Bubbles"],
-    ["E89928", "Fire Bush"],
-    ["E8B9B3", "Shilo"],
-    ["E8E0D5", "Pearl Bush"],
-    ["E8EBE0", "Green White"],
-    ["E8F1D4", "Chrome White"],
-    ["E8F2EB", "Gin"],
-    ["E8F5F2", "Aqua Squeeze"],
-    ["E96E00", "Clementine"],
-    ["E97451", "Burnt Sienna"],
-    ["E97C07", "Tahiti Gold"],
-    ["E9CECD", "Oyster Pink"],
-    ["E9D75A", "Confetti"],
-    ["E9E3E3", "Ebb"],
-    ["E9F8ED", "Ottoman"],
-    ["E9FFFD", "Clear Day"],
-    ["EA88A8", "Carissma"],
-    ["EAAE69", "Porsche"],
-    ["EAB33B", "Tulip Tree"],
-    ["EAC674", "Rob Roy"],
-    ["EADAB8", "Raffia"],
-    ["EAE8D4", "White Rock"],
-    ["EAF6EE", "Panache"],
-    ["EAF6FF", "Solitude"],
-    ["EAF9F5", "Aqua Spring"],
-    ["EAFFFE", "Dew"],
-    ["EB9373", "Apricot"],
-    ["EBC2AF", "Zinnwaldite"],
-    ["ECA927", "Fuel Yellow"],
-    ["ECC54E", "Ronchi"],
-    ["ECC7EE", "French Lilac"],
-    ["ECCDB9", "Just Right"],
-    ["ECE090", "Wild Rice"],
-    ["ECEBBD", "Fall Green"],
-    ["ECEBCE", "Aths Special"],
-    ["ECF245", "Starship"],
-    ["ED0A3F", "Red Ribbon"],
-    ["ED7A1C", "Tango"],
-    ["ED9121", "Carrot Orange"],
-    ["ED989E", "Sea Pink"],
-    ["EDB381", "Tacao"],
-    ["EDC9AF", "Desert Sand"],
-    ["EDCDAB", "Pancho"],
-    ["EDDCB1", "Chamois"],
-    ["EDEA99", "Primrose"],
-    ["EDF5DD", "Frost"],
-    ["EDF5F5", "Aqua Haze"],
-    ["EDF6FF", "Zumthor"],
-    ["EDF9F1", "Narvik"],
-    ["EDFC84", "Honeysuckle"],
-    ["EE82EE", "Lavender Magenta"],
-    ["EEC1BE", "Beauty Bush"],
-    ["EED794", "Chalky"],
-    ["EED9C4", "Almond"],
-    ["EEDC82", "Flax"],
-    ["EEDEDA", "Bizarre"],
-    ["EEE3AD", "Double Colonial White"],
-    ["EEEEE8", "Cararra"],
-    ["EEEF78", "Manz"],
-    ["EEF0C8", "Tahuna Sands"],
-    ["EEF0F3", "Athens Gray"],
-    ["EEF3C3", "Tusk"],
-    ["EEF4DE", "Loafer"],
-    ["EEF6F7", "Catskill White"],
-    ["EEFDFF", "Twilight Blue"],
-    ["EEFF9A", "Jonquil"],
-    ["EEFFE2", "Rice Flower"],
-    ["EF863F", "Jaffa"],
-    ["EFEFEF", "Gallery"],
-    ["EFF2F3", "Porcelain"],
-    ["F091A9", "Mauvelous"],
-    ["F0D52D", "Golden Dream"],
-    ["F0DB7D", "Golden Sand"],
-    ["F0DC82", "Buff"],
-    ["F0E2EC", "Prim"],
-    ["F0E68C", "Khaki"],
-    ["F0EEFD", "Selago"],
-    ["F0EEFF", "Titan White"],
-    ["F0F8FF", "Alice Blue"],
-    ["F0FCEA", "Feta"],
-    ["F18200", "Gold Drop"],
-    ["F19BAB", "Wewak"],
-    ["F1E788", "Sahara Sand"],
-    ["F1E9D2", "Parchment"],
-    ["F1E9FF", "Blue Chalk"],
-    ["F1EEC1", "Mint Julep"],
-    ["F1F1F1", "Seashell"],
-    ["F1F7F2", "Saltpan"],
-    ["F1FFAD", "Tidal"],
-    ["F1FFC8", "Chiffon"],
-    ["F2552A", "Flamingo"],
-    ["F28500", "Tangerine"],
-    ["F2C3B2", "Mandys Pink"],
-    ["F2F2F2", "Concrete"],
-    ["F2FAFA", "Black Squeeze"],
-    ["F34723", "Pomegranate"],
-    ["F3AD16", "Buttercup"],
-    ["F3D69D", "New Orleans"],
-    ["F3D9DF", "Vanilla Ice"],
-    ["F3E7BB", "Sidecar"],
-    ["F3E9E5", "Dawn Pink"],
-    ["F3EDCF", "Wheatfield"],
-    ["F3FB62", "Canary"],
-    ["F3FBD4", "Orinoco"],
-    ["F3FFD8", "Carla"],
-    ["F400A1", "Hollywood Cerise"],
-    ["F4A460", "Sandy brown"],
-    ["F4C430", "Saffron"],
-    ["F4D81C", "Ripe Lemon"],
-    ["F4EBD3", "Janna"],
-    ["F4F2EE", "Pampas"],
-    ["F4F4F4", "Wild Sand"],
-    ["F4F8FF", "Zircon"],
-    ["F57584", "Froly"],
-    ["F5C85C", "Cream Can"],
-    ["F5C999", "Manhattan"],
-    ["F5D5A0", "Maize"],
-    ["F5DEB3", "Wheat"],
-    ["F5E7A2", "Sandwisp"],
-    ["F5E7E2", "Pot Pourri"],
-    ["F5E9D3", "Albescent White"],
-    ["F5EDEF", "Soft Peach"],
-    ["F5F3E5", "Ecru White"],
-    ["F5F5DC", "Beige"],
-    ["F5FB3D", "Golden Fizz"],
-    ["F5FFBE", "Australian Mint"],
-    ["F64A8A", "French Rose"],
-    ["F653A6", "Brilliant Rose"],
-    ["F6A4C9", "Illusion"],
-    ["F6F0E6", "Merino"],
-    ["F6F7F7", "Black Haze"],
-    ["F6FFDC", "Spring Sun"],
-    ["F7468A", "Violet Red"],
-    ["F77703", "Chilean Fire"],
-    ["F77FBE", "Persian Pink"],
-    ["F7B668", "Rajah"],
-    ["F7C8DA", "Azalea"],
-    ["F7DBE6", "We Peep"],
-    ["F7F2E1", "Quarter Spanish White"],
-    ["F7F5FA", "Whisper"],
-    ["F7FAF7", "Snow Drift"],
-    ["F8B853", "Casablanca"],
-    ["F8C3DF", "Chantilly"],
-    ["F8D9E9", "Cherub"],
-    ["F8DB9D", "Marzipan"],
-    ["F8DD5C", "Energy Yellow"],
-    ["F8E4BF", "Givry"],
-    ["F8F0E8", "White Linen"],
-    ["F8F4FF", "Magnolia"],
-    ["F8F6F1", "Spring Wood"],
-    ["F8F7DC", "Coconut Cream"],
-    ["F8F7FC", "White Lilac"],
-    ["F8F8F7", "Desert Storm"],
-    ["F8F99C", "Texas"],
-    ["F8FACD", "Corn Field"],
-    ["F8FDD3", "Mimosa"],
-    ["F95A61", "Carnation"],
-    ["F9BF58", "Saffron Mango"],
-    ["F9E0ED", "Carousel Pink"],
-    ["F9E4BC", "Dairy Cream"],
-    ["F9E663", "Portica"],
-    ["F9EAF3", "Amour"],
-    ["F9F8E4", "Rum Swizzle"],
-    ["F9FF8B", "Dolly"],
-    ["F9FFF6", "Sugar Cane"],
-    ["FA7814", "Ecstasy"],
-    ["FA9D5A", "Tan Hide"],
-    ["FAD3A2", "Corvette"],
-    ["FADFAD", "Peach Yellow"],
-    ["FAE600", "Turbo"],
-    ["FAEAB9", "Astra"],
-    ["FAECCC", "Champagne"],
-    ["FAF0E6", "Linen"],
-    ["FAF3F0", "Fantasy"],
-    ["FAF7D6", "Citrine White"],
-    ["FAFAFA", "Alabaster"],
-    ["FAFDE4", "Hint of Yellow"],
-    ["FAFFA4", "Milan"],
-    ["FB607F", "Brink Pink"],
-    ["FB8989", "Geraldine"],
-    ["FBA0E3", "Lavender Rose"],
-    ["FBA129", "Sea Buckthorn"],
-    ["FBAC13", "Sun"],
-    ["FBAED2", "Lavender Pink"],
-    ["FBB2A3", "Rose Bud"],
-    ["FBBEDA", "Cupid"],
-    ["FBCCE7", "Classic Rose"],
-    ["FBCEB1", "Apricot Peach"],
-    ["FBE7B2", "Banana Mania"],
-    ["FBE870", "Marigold Yellow"],
-    ["FBE96C", "Festival"],
-    ["FBEA8C", "Sweet Corn"],
-    ["FBEC5D", "Candy Corn"],
-    ["FBF9F9", "Hint of Red"],
-    ["FBFFBA", "Shalimar"],
-    ["FC0FC0", "Shocking Pink"],
-    ["FC80A5", "Tickle Me Pink"],
-    ["FC9C1D", "Tree Poppy"],
-    ["FCC01E", "Lightning Yellow"],
-    ["FCD667", "Goldenrod"],
-    ["FCD917", "Candlelight"],
-    ["FCDA98", "Cherokee"],
-    ["FCF4D0", "Double Pearl Lusta"],
-    ["FCF4DC", "Pearl Lusta"],
-    ["FCF8F7", "Vista White"],
-    ["FCFBF3", "Bianca"],
-    ["FCFEDA", "Moon Glow"],
-    ["FCFFE7", "China Ivory"],
-    ["FCFFF9", "Ceramic"],
-    ["FD0E35", "Torch Red"],
-    ["FD5B78", "Wild Watermelon"],
-    ["FD7B33", "Crusta"],
-    ["FD7C07", "Sorbus"],
-    ["FD9FA2", "Sweet Pink"],
-    ["FDD5B1", "Light Apricot"],
-    ["FDD7E4", "Pig Pink"],
-    ["FDE1DC", "Cinderella"],
-    ["FDE295", "Golden Glow"],
-    ["FDE910", "Lemon"],
-    ["FDF5E6", "Old Lace"],
-    ["FDF6D3", "Half Colonial White"],
-    ["FDF7AD", "Drover"],
-    ["FDFEB8", "Pale Prim"],
-    ["FDFFD5", "Cumulus"],
-    ["FE28A2", "Persian Rose"],
-    ["FE4C40", "Sunset Orange"],
-    ["FE6F5E", "Bittersweet"],
-    ["FE9D04", "California"],
-    ["FEA904", "Yellow Sea"],
-    ["FEBAAD", "Melon"],
-    ["FED33C", "Bright Sun"],
-    ["FED85D", "Dandelion"],
-    ["FEDB8D", "Salomie"],
-    ["FEE5AC", "Cape Honey"],
-    ["FEEBF3", "Remy"],
-    ["FEEFCE", "Oasis"],
-    ["FEF0EC", "Bridesmaid"],
-    ["FEF2C7", "Beeswax"],
-    ["FEF3D8", "Bleach White"],
-    ["FEF4CC", "Pipi"],
-    ["FEF4DB", "Half Spanish White"],
-    ["FEF4F8", "Wisp Pink"],
-    ["FEF5F1", "Provincial Pink"],
-    ["FEF7DE", "Half Dutch White"],
-    ["FEF8E2", "Solitaire"],
-    ["FEF8FF", "White Pointer"],
-    ["FEF9E3", "Off Yellow"],
-    ["FEFCED", "Orange White"],
-    ["FF0000", "Red"],
-    ["FF007F", "Rose"],
-    ["FF00CC", "Purple Pizzazz"],
-    ["FF00FF", "Magenta / Fuchsia"],
-    ["FF2400", "Scarlet"],
-    ["FF3399", "Wild Strawberry"],
-    ["FF33CC", "Razzle Dazzle Rose"],
-    ["FF355E", "Radical Red"],
-    ["FF3F34", "Red Orange"],
-    ["FF4040", "Coral Red"],
-    ["FF4D00", "Vermilion"],
-    ["FF4F00", "International Orange"],
-    ["FF6037", "Outrageous Orange"],
-    ["FF6600", "Blaze Orange"],
-    ["FF66FF", "Pink Flamingo"],
-    ["FF681F", "Orange"],
-    ["FF69B4", "Hot Pink"],
-    ["FF6B53", "Persimmon"],
-    ["FF6FFF", "Blush Pink"],
-    ["FF7034", "Burning Orange"],
-    ["FF7518", "Pumpkin"],
-    ["FF7D07", "Flamenco"],
-    ["FF7F00", "Flush Orange"],
-    ["FF7F50", "Coral"],
-    ["FF8C69", "Salmon"],
-    ["FF9000", "Pizazz"],
-    ["FF910F", "West Side"],
-    ["FF91A4", "Pink Salmon"],
-    ["FF9933", "Neon Carrot"],
-    ["FF9966", "Atomic Tangerine"],
-    ["FF9980", "Vivid Tangerine"],
-    ["FF9E2C", "Sunshade"],
-    ["FFA000", "Orange Peel"],
-    ["FFA194", "Mona Lisa"],
-    ["FFA500", "Web Orange"],
-    ["FFA6C9", "Carnation Pink"],
-    ["FFAB81", "Hit Pink"],
-    ["FFAE42", "Yellow Orange"],
-    ["FFB0AC", "Cornflower Lilac"],
-    ["FFB1B3", "Sundown"],
-    ["FFB31F", "My Sin"],
-    ["FFB555", "Texas Rose"],
-    ["FFB7D5", "Cotton Candy"],
-    ["FFB97B", "Macaroni and Cheese"],
-    ["FFBA00", "Selective Yellow"],
-    ["FFBD5F", "Koromiko"],
-    ["FFBF00", "Amber"],
-    ["FFC0A8", "Wax Flower"],
-    ["FFC0CB", "Pink"],
-    ["FFC3C0", "Your Pink"],
-    ["FFC901", "Supernova"],
-    ["FFCBA4", "Flesh"],
-    ["FFCC33", "Sunglow"],
-    ["FFCC5C", "Golden Tainoi"],
-    ["FFCC99", "Peach Orange"],
-    ["FFCD8C", "Chardonnay"],
-    ["FFD1DC", "Pastel Pink"],
-    ["FFD2B7", "Romantic"],
-    ["FFD38C", "Grandis"],
-    ["FFD700", "Gold"],
-    ["FFD800", "School bus Yellow"],
-    ["FFD8D9", "Cosmos"],
-    ["FFDB58", "Mustard"],
-    ["FFDCD6", "Peach Schnapps"],
-    ["FFDDAF", "Caramel"],
-    ["FFDDCD", "Tuft Bush"],
-    ["FFDDCF", "Watusi"],
-    ["FFDDF4", "Pink Lace"],
-    ["FFDEAD", "Navajo White"],
-    ["FFDEB3", "Frangipani"],
-    ["FFE1DF", "Pippin"],
-    ["FFE1F2", "Pale Rose"],
-    ["FFE2C5", "Negroni"],
-    ["FFE5A0", "Cream Brulee"],
-    ["FFE5B4", "Peach"],
-    ["FFE6C7", "Tequila"],
-    ["FFE772", "Kournikova"],
-    ["FFEAC8", "Sandy Beach"],
-    ["FFEAD4", "Karry"],
-    ["FFEC13", "Broom"],
-    ["FFEDBC", "Colonial White"],
-    ["FFEED8", "Derby"],
-    ["FFEFA1", "Vis Vis"],
-    ["FFEFC1", "Egg White"],
-    ["FFEFD5", "Papaya Whip"],
-    ["FFEFEC", "Fair Pink"],
-    ["FFF0DB", "Peach Cream"],
-    ["FFF0F5", "Lavender blush"],
-    ["FFF14F", "Gorse"],
-    ["FFF1B5", "Buttermilk"],
-    ["FFF1D8", "Pink Lady"],
-    ["FFF1EE", "Forget Me Not"],
-    ["FFF1F9", "Tutu"],
-    ["FFF39D", "Picasso"],
-    ["FFF3F1", "Chardon"],
-    ["FFF46E", "Paris Daisy"],
-    ["FFF4CE", "Barley White"],
-    ["FFF4DD", "Egg Sour"],
-    ["FFF4E0", "Sazerac"],
-    ["FFF4E8", "Serenade"],
-    ["FFF4F3", "Chablis"],
-    ["FFF5EE", "Seashell Peach"],
-    ["FFF5F3", "Sauvignon"],
-    ["FFF6D4", "Milk Punch"],
-    ["FFF6DF", "Varden"],
-    ["FFF6F5", "Rose White"],
-    ["FFF8D1", "Baja White"],
-    ["FFF9E2", "Gin Fizz"],
-    ["FFF9E6", "Early Dawn"],
-    ["FFFACD", "Lemon Chiffon"],
-    ["FFFAF4", "Bridal Heath"],
-    ["FFFBDC", "Scotch Mist"],
-    ["FFFBF9", "Soapstone"],
-    ["FFFC99", "Witch Haze"],
-    ["FFFCEA", "Buttery White"],
-    ["FFFCEE", "Island Spice"],
-    ["FFFDD0", "Cream"],
-    ["FFFDE6", "Chilean Heath"],
-    ["FFFDE8", "Travertine"],
-    ["FFFDF3", "Orchid White"],
-    ["FFFDF4", "Quarter Pearl Lusta"],
-    ["FFFEE1", "Half and Half"],
-    ["FFFEEC", "Apricot White"],
-    ["FFFEF0", "Rice Cake"],
-    ["FFFEF6", "Black White"],
-    ["FFFEFD", "Romance"],
-    ["FFFF00", "Yellow"],
-    ["FFFF66", "Laser Lemon"],
-    ["FFFF99", "Pale Canary"],
-    ["FFFFB4", "Portafino"],
-    ["FFFFF0", "Ivory"],
-    ["FFFFFF", "White"]
-]
 
-def hex_to_rgb_to_hsl(hex):
-     hlen = len(hex)
-     rgb = tuple(int(hex[i:i+hlen/3], 16) for i in range(0, hlen, hlen/3))
-     hls = colorsys.rgb_to_hls(rgb[0] / 255.0, rgb[1] / 255.0, rgb[2] / 255.0)
-     return [round(hls[0] * 360, 3), round(hls[2] * 100, 3), round(hls[1] * 100, 3)]
-
-
-new_colors = [[hex_to_rgb_to_hsl(line[0]), line[1]] for line in colors]
-
-for line in new_colors:
-    print(line)
-
+new_colors =[
+[[0.0, 0.0, 0.0], 'Black']
+[[240.0, 100.0, 25.098], 'Navy Blue']
+[[240.0, 100.0, 39.216], 'Dark Blue']
+[[240.0, 100.0, 50.0], 'Blue']
+[[233.538, 100.0, 12.745], 'Stratos']
+[[182.143, 100.0, 5.49], 'Swamp']
+[[224.444, 100.0, 26.471], 'Resolution Blue']
+[[120.0, 100.0, 8.039], 'Deep Fir']
+[[161.739, 100.0, 9.02], 'Burnham']
+[[223.114, 100.0, 32.745], 'International Klein Blue']
+[[204.578, 100.0, 16.275], 'Prussian Blue']
+[[210.0, 100.0, 20.0], 'Midnight Blue']
+[[220.0, 100.0, 30.0], 'Smalt']
+[[176.604, 100.0, 10.392], 'Deep Teal']
+[[181.875, 100.0, 12.549], 'Cyprus']
+[[147.429, 100.0, 13.725], 'Kaitoke Green']
+[[215.088, 100.0, 33.529], 'Cobalt']
+[[138.333, 100.0, 14.118], 'Crusoe']
+[[185.25, 100.0, 15.686], 'Sherpa Blue']
+[[209.102, 100.0, 32.745], 'Endeavour']
+[[137.727, 100.0, 17.255], 'Camarone']
+[[210.0, 100.0, 40.0], 'Science Blue']
+[[216.0, 100.0, 50.0], 'Blue Ribbon']
+[[168.205, 100.0, 22.941], 'Tropical Rain Forest']
+[[196.564, 100.0, 31.961], 'Allports']
+[[195.808, 100.0, 32.745], 'Deep Cerulean']
+[[202.01, 100.0, 39.02], 'Lochmara']
+[[210.118, 100.0, 50.0], 'Azure Radiance']
+[[180.0, 100.0, 25.098], 'Teal']
+[[190.879, 100.0, 35.686], 'Bondi Blue']
+[[191.939, 100.0, 38.431], 'Pacific Blue']
+[[173.133, 100.0, 32.549], 'Persian Green']
+[[158.214, 100.0, 32.941], 'Jade']
+[[165.0, 100.0, 40.0], 'Caribbean Green']
+[[180.0, 100.0, 40.0], "Robin's Egg Blue"]
+[[120.0, 100.0, 50.0], 'Green']
+[[149.882, 100.0, 50.0], 'Spring Green']
+[[180.0, 100.0, 50.0], 'Cyan / Aqua']
+[[211.2, 92.593, 5.294], 'Blue Charcoal']
+[[215.769, 96.296, 10.588], 'Midnight']
+[[158.571, 93.333, 5.882], 'Holly']
+[[192.5, 96.0, 9.804], 'Daintree']
+[[150.566, 96.364, 10.784], 'Cardin Green']
+[[147.778, 96.429, 10.98], 'County Green']
+[[202.268, 97.98, 19.412], 'Astronaut Blue']
+[[204.571, 98.131, 20.98], 'Regal Blue']
+[[173.514, 97.368, 14.902], 'Aqua Deep']
+[[197.727, 98.507, 26.275], 'Orient']
+[[180.619, 97.98, 19.412], 'Blue Stone']
+[[151.111, 98.182, 21.569], 'Fun Green']
+[[175.0, 98.361, 23.922], 'Pine Green']
+[[186.269, 98.529, 26.667], 'Blue Lagoon']
+[[169.302, 98.473, 25.686], 'Deep Sea']
+[[158.148, 98.78, 32.157], 'Green Haze']
+[[146.512, 91.489, 9.216], 'English Holly']
+[[160.645, 93.939, 12.941], 'Sherwood Green']
+[[210.429, 97.222, 28.235], 'Congress Blue']
+[[173.684, 95.0, 15.686], 'Evening Sea']
+[[200.408, 97.351, 29.608], 'Bahama Blue']
+[[169.545, 97.059, 26.667], 'Observatory']
+[[193.493, 98.122, 41.765], 'Cerulean']
+[[220.0, 90.476, 12.353], 'Tangaroa']
+[[209.62, 92.941, 16.667], 'Green Vogue']
+[[182.243, 94.69, 22.157], 'Mosque']
+[[120.0, 60.0, 3.922], 'Midnight Moss']
+[[210.0, 78.947, 7.451], 'Black Pearl']
+[[205.0, 90.0, 15.686], 'Blue Whale']
+[[150.0, 88.235, 13.333], 'Zuccini']
+[[196.235, 91.398, 18.235], 'Teal Blue']
+[[228.814, 85.507, 13.529], 'Deep Cove']
+[[227.561, 89.13, 18.039], 'Gulf Blue']
+[[201.818, 92.958, 27.843], 'Venice Blue']
+[[166.415, 91.379, 22.745], 'Watercourse']
+[[221.053, 90.476, 24.706], 'Catalina Blue']
+[[182.449, 80.328, 11.961], 'Tiber']
+[[169.53, 92.547, 31.569], 'Gossamer']
+[[170.71, 92.814, 32.745], 'Niagara']
+[[198.082, 83.908, 17.059], 'Tarawera']
+[[268.0, 88.235, 3.333], 'Jaguar']
+[[148.235, 51.515, 6.471], 'Black Bean']
+[[221.684, 85.586, 21.765], 'Deep Sapphire']
+[[170.732, 88.489, 27.255], 'Elf Green']
+[[177.321, 93.333, 47.059], 'Bright Turquoise']
+[[220.519, 81.053, 18.627], 'Downriver']
+[[133.846, 59.091, 8.627], 'Palm Green']
+[[220.0, 82.353, 20.0], 'Madison']
+[[156.0, 71.429, 12.353], 'Bottle Green']
+[[180.75, 81.633, 19.216], 'Deep Sea Green']
+[[153.559, 86.765, 26.667], 'Salem']
+[[261.429, 100.0, 5.49], 'Black Russian']
+[[122.903, 75.61, 16.078], 'Dark Fern']
+[[117.576, 89.189, 21.765], 'Japanese Laurel']
+[[183.364, 84.252, 24.902], 'Atoll']
+[[0.0, 0.0, 4.314], 'Cod Gray']
+[[94.286, 30.435, 4.51], 'Marshland']
+[[96.0, 41.667, 4.706], 'Gordons Green']
+[[92.0, 65.217, 4.51], 'Black Forest']
+[[117.363, 86.667, 20.588], 'San Felix']
+[[140.29, 90.393, 44.902], 'Malachite']
+[[243.333, 45.0, 7.843], 'Ebony']
+[[220.0, 11.111, 5.294], 'Woodsmoke']
+[[143.077, 35.135, 7.255], 'Racing Green']
+[[179.455, 82.09, 26.275], 'Surfie Green']
+[[183.182, 84.615, 30.588], 'Blue Chill']
+[[252.766, 88.679, 10.392], 'Black Rock']
+[[216.0, 27.778, 7.059], 'Bunker']
+[[168.0, 36.585, 8.039], 'Aztec']
+[[147.273, 55.932, 11.569], 'Bush']
+[[240.0, 26.316, 7.451], 'Cinder']
+[[190.588, 54.839, 12.157], 'Firefly']
+[[227.413, 82.659, 33.922], 'Torea Bay']
+[[230.769, 28.889, 8.824], 'Vulcan']
+[[76.0, 60.0, 4.902], 'Green Waterloo']
+[[175.0, 69.231, 20.392], 'Eden']
+[[243.125, 80.0, 23.529], 'Arapawa']
+[[243.609, 86.928, 30.0], 'Ultramarine']
+[[201.509, 59.551, 17.451], 'Elephant']
+[[151.011, 71.2, 24.51], 'Jewel']
+[[0.0, 100.0, 3.725], 'Diesel']
+[[18.462, 52.0, 4.902], 'Asphalt']
+[[220.345, 60.417, 18.824], 'Blue Zodiac']
+[[126.0, 61.224, 19.216], 'Parsley']
+[[18.0, 100.0, 3.922], 'Nero']
+[[216.0, 78.947, 37.255], 'Tory Blue']
+[[229.091, 56.701, 19.02], 'Bunting']
+[[213.214, 80.0, 41.176], 'Denim']
+[[174.894, 69.118, 26.667], 'Genoa']
+[[230.0, 29.032, 12.157], 'Mirage']
+[[92.308, 28.889, 8.824], 'Hunter Green']
+[[211.429, 48.837, 16.863], 'Big Stone']
+[[145.714, 38.889, 14.118], 'Celtic']
+[[167.143, 38.889, 14.118], 'Timber Green']
+[[172.258, 41.333, 14.706], 'Gable Green']
+[[77.778, 77.143, 6.863], 'Pine Tree']
+[[202.041, 68.056, 28.235], 'Chathams Blue']
+[[95.0, 66.667, 10.588], 'Deep Forest Green']
+[[200.816, 67.123, 28.627], 'Blumine']
+[[102.162, 56.923, 12.745], 'Palm Leaf']
+[[207.857, 52.83, 20.784], 'Nile Blue']
+[[213.147, 74.093, 37.843], 'Fun Blue']
+[[240.0, 60.0, 25.49], 'Lucky Point']
+[[161.961, 74.634, 40.196], 'Mountain Meadow']
+[[262.388, 94.366, 13.922], 'Tolopea']
+[[257.838, 53.623, 13.529], 'Haiti']
+[[245.143, 74.468, 27.647], 'Deep Koamaru']
+[[41.739, 74.194, 6.078], 'Acadia']
+[[100.0, 46.875, 12.549], 'Seaweed']
+[[221.408, 56.8, 24.51], 'Biscay']
+[[205.846, 70.652, 36.078], 'Matisse']
+[[30.0, 55.556, 7.059], 'Crowshead']
+[[70.909, 22.449, 9.608], 'Rangoon Green']
+[[229.057, 73.953, 42.157], 'Persian Blue']
+[[150.0, 39.13, 18.039], 'Everglade']
+[[180.619, 63.399, 30.0], 'Elm']
+[[152.647, 53.968, 24.706], 'Green Pea']
+[[25.385, 76.471, 6.667], 'Creole']
+[[37.143, 53.846, 7.647], 'Karaka']
+[[40.909, 57.895, 7.451], 'El Paso']
+[[214.426, 50.413, 23.725], 'Cello']
+[[168.649, 38.144, 19.02], 'Te Papa Green']
+[[209.6, 100.0, 55.882], 'Dodger Blue']
+[[189.041, 70.874, 40.392], 'Eastern Blue']
+[[11.25, 34.783, 9.02], 'Night Rider']
+[[180.0, 72.444, 44.118], 'Java']
+[[240.0, 63.006, 33.922], 'Jacksons Purple']
+[[223.846, 44.828, 22.745], 'Cloud Burst']
+[[192.0, 43.86, 22.353], 'Blue Dianne']
+[[37.895, 40.426, 9.216], 'Eternity']
+[[253.929, 87.5, 25.098], 'Deep Blue']
+[[120.0, 60.694, 33.922], 'Forest Green']
+[[96.429, 36.842, 14.902], 'Mallard']
+[[268.889, 72.973, 14.51], 'Violet']
+[[17.647, 89.474, 7.451], 'Kilamanjaro']
+[[87.692, 18.31, 13.922], 'Log Cabin']
+[[85.0, 35.294, 13.333], 'Black Olive']
+[[100.615, 68.421, 18.627], 'Green House']
+[[30.0, 68.182, 8.627], 'Graphite']
+[[32.903, 72.093, 8.431], 'Cannon Black']
+[[247.5, 43.636, 21.569], 'Port Gore']
+[[222.857, 8.642, 15.882], 'Shark']
+[[94.286, 27.273, 15.098], 'Green Kelp']
+[[200.581, 69.919, 48.235], 'Curious Blue']
+[[260.792, 94.393, 20.98], 'Paua']
+[[259.604, 90.991, 21.765], 'Paris M']
+[[21.818, 76.744, 8.431], 'Wood Bark']
+[[0.0, 31.034, 11.373], 'Gondola']
+[[250.0, 20.455, 17.255], 'Steel Gray']
+[[234.286, 21.649, 19.02], 'Ebony Clay']
+[[227.333, 53.571, 32.941], 'Bay of Many']
+[[172.683, 34.454, 23.333], 'Plantation']
+[[151.515, 55.932, 34.706], 'Eucalyptus']
+[[28.421, 31.148, 11.961], 'Oil']
+[[226.329, 49.686, 31.176], 'Astronaut']
+[[216.0, 67.347, 48.039], 'Mariner']
+[[261.22, 77.358, 20.784], 'Violent Violet']
+[[272.0, 18.519, 15.882], 'Bastille']
+[[37.5, 24.242, 12.941], 'Zeus']
+[[240.0, 14.583, 18.824], 'Charade']
+[[196.46, 57.949, 38.235], 'Jelly Bean']
+[[163.385, 61.321, 41.569], 'Jungle Green']
+[[267.209, 93.478, 18.039], 'Cherry Pie']
+[[12.857, 50.0, 10.98], 'Coffee Bean']
+[[264.0, 11.628, 16.863], 'Baltic Sea']
+[[78.667, 67.164, 13.137], 'Turtle Green']
+[[223.784, 63.793, 45.49], 'Cerulean Blue']
+[[0.0, 91.111, 8.824], 'Sepia Black']
+[[260.0, 51.923, 20.392], 'Valhalla']
+[[102.0, 11.111, 17.647], 'Heavy Metal']
+[[254.286, 81.818, 30.196], 'Blue Gem']
+[[287.143, 38.889, 14.118], 'Revolver']
+[[276.667, 21.429, 16.471], 'Bleached Cedar']
+[[175.0, 52.174, 36.078], 'Lochinvar']
+[[43.448, 47.541, 11.961], 'Mikado']
+[[189.231, 12.621, 20.196], 'Outer Space']
+[[217.636, 55.0, 39.216], 'St Tropaz']
+[[306.977, 87.755, 9.608], 'Jacaranda']
+[[29.268, 80.392, 10.0], 'Jacko Bean']
+[[75.0, 19.048, 16.471], 'Rangitoto']
+[[220.385, 36.111, 28.235], 'Rhino']
+[[146.452, 50.27, 36.275], 'Sea Green']
+[[187.59, 65.873, 50.588], 'Scooter']
+[[45.455, 54.098, 11.961], 'Onion']
+[[234.091, 58.407, 44.314], 'Governor Bay']
+[[221.622, 54.146, 40.196], 'Sapphire']
+[[175.814, 31.387, 26.863], 'Spectra']
+[[187.368, 37.748, 29.608], 'Casal']
+[[309.767, 81.132, 10.392], 'Melanzane']
+[[3.333, 23.077, 15.294], 'Cocoa Brown']
+[[49.091, 52.381, 12.353], 'Woodrush']
+[[212.069, 37.662, 30.196], 'San Juan']
+[[175.273, 66.265, 51.176], 'Turquoise']
+[[11.538, 36.111, 14.118], 'Eclipse']
+[[211.5, 28.986, 27.059], 'Pickled Bluewood']
+[[217.5, 53.333, 41.176], 'Azure']
+[[197.609, 48.421, 37.255], 'Calypso']
+[[183.704, 45.251, 35.098], 'Paradiso']
+[[258.462, 74.286, 27.451], 'Persian Indigo']
+[[271.765, 17.172, 19.412], 'Blackcurrant']
+[[0.0, 0.0, 19.608], 'Mine Shaft']
+[[164.651, 30.07, 28.039], 'Stromboli']
+[[102.692, 72.222, 28.235], 'Bilbao']
+[[199.091, 52.381, 41.176], 'Astral']
+[[267.692, 94.545, 21.569], 'Christalle']
+[[324.0, 10.87, 18.039], 'Thunder']
+[[160.0, 60.0, 50.0], 'Shamrock']
+[[0.0, 42.466, 14.314], 'Tamarind']
+[[298.889, 100.0, 10.588], 'Mardi Gras']
+[[285.0, 65.0, 15.686], 'Valentino']
+[[272.055, 72.277, 19.804], 'Jagger']
+[[240.0, 10.924, 23.333], 'Tuna']
+[[222.759, 45.078, 37.843], 'Chambray']
+[[251.25, 25.0, 25.098], 'Martinique']
+[[30.0, 1.887, 20.784], 'Tuatara']
+[[67.66, 64.384, 14.314], 'Waiouru']
+[[187.606, 39.665, 35.098], 'Ming']
+[[103.009, 71.975, 30.784], 'La Palma']
+[[0.0, 92.982, 11.176], 'Chocolate']
+[[26.087, 71.875, 12.549], 'Clinker']
+[[39.512, 59.42, 13.529], 'Brown Tumbleweed']
+[[40.909, 25.0, 17.255], 'Birch']
+[[180.968, 36.047, 33.725], 'Oracle']
+[[267.857, 93.333, 23.529], 'Blue Diamond']
+[[272.727, 51.402, 20.98], 'Grape']
+[[24.0, 4.673, 20.98], 'Dune']
+[[213.103, 20.567, 27.647], 'Oxford Blue']
+[[77.895, 64.045, 17.451], 'Clover']
+[[202.5, 17.391, 27.059], 'Limed Spruce']
+[[91.852, 68.067, 23.333], 'Dell']
+[[326.897, 100.0, 11.373], 'Toledo']
+[[22.857, 56.757, 14.51], 'Sambuca']
+[[255.0, 43.243, 29.02], 'Jacarta']
+[[184.8, 30.12, 32.549], 'William']
+[[136.25, 29.268, 32.157], 'Killarney']
+[[170.847, 50.427, 45.882], 'Keppel']
+[[348.814, 100.0, 11.569], 'Temptress']
+[[351.6, 73.529, 13.333], 'Aubergine']
+[[0.0, 31.111, 17.647], 'Jon']
+[[17.778, 29.67, 17.843], 'Treehouse']
+[[146.667, 34.807, 35.49], 'Amazon']
+[[197.355, 50.628, 46.863], 'Boston Blue']
+[[267.857, 87.5, 25.098], 'Windsor']
+[[13.333, 81.818, 12.941], 'Rebel']
+[[260.0, 58.389, 29.216], 'Meteorite']
+[[29.455, 84.615, 12.745], 'Dark Ebony']
+[[55.909, 57.895, 14.902], 'Camouflage']
+[[225.714, 14.894, 27.647], 'Bright Gray']
+[[172.5, 6.25, 25.098], 'Cape Cod']
+[[112.0, 11.45, 25.686], 'Lunar Green']
+[[10.169, 93.651, 12.353], 'Bean  ']
+[[24.0, 32.609, 18.039], 'Bistre']
+[[139.688, 34.409, 36.471], 'Goblin']
+[[268.065, 93.939, 25.882], 'Kingfisher Daisy']
+[[11.429, 51.22, 16.078], 'Cedar']
+[[17.778, 27.835, 19.02], 'English Walnut']
+[[28.235, 37.778, 17.647], 'Black Marlin']
+[[264.0, 7.937, 24.706], 'Ship Gray']
+[[189.302, 50.988, 49.608], 'Pelorous']
+[[26.667, 75.0, 14.118], 'Bronze']
+[[35.238, 100.0, 12.353], 'Cola']
+[[45.246, 93.846, 12.745], 'Madras']
+[[251.392, 45.143, 34.314], 'Minsk']
+[[103.333, 13.433, 26.275], 'Cabbage Pont']
+[[111.724, 19.728, 28.824], 'Tom Thumb']
+[[160.0, 19.231, 30.588], 'Mineral Green']
+[[169.385, 51.181, 50.196], 'Puerto Rico']
+[[105.176, 100.0, 50.0], 'Harlequin']
+[[21.905, 96.923, 12.745], 'Brown Pod']
+[[20.571, 37.634, 18.235], 'Cork']
+[[22.5, 6.667, 23.529], 'Masala']
+[[55.385, 43.82, 17.451], 'Thatch Green']
+[[215.122, 24.26, 33.137], 'Fiord']
+[[160.909, 34.021, 38.039], 'Viridian']
+[[138.462, 44.828, 45.49], 'Chateau Green']
+[[285.349, 100.0, 16.863], 'Ripe Plum']
+[[18.367, 60.494, 15.882], 'Paco']
+[[19.592, 60.494, 15.882], 'Deep Oak']
+[[30.0, 8.333, 23.529], 'Merlin']
+[[237.273, 14.474, 29.804], 'Gun Powder']
+[[229.0, 31.579, 37.255], 'East Bay']
+[[225.0, 72.727, 56.863], 'Royal Blue']
+[[151.429, 44.681, 46.078], 'Ocean Green']
+[[0.0, 91.304, 13.529], 'Burnt Maroon']
+[[43.636, 33.333, 19.412], 'Lisbon Brown']
+[[177.818, 29.412, 36.667], 'Faded Jade']
+[[276.8, 64.103, 22.941], 'Scarlet Gum']
+[[29.143, 35.354, 19.412], 'Iroko']
+[[35.0, 9.836, 23.922], 'Armadillo']
+[[215.455, 14.103, 30.588], 'River Bed']
+[[85.161, 78.151, 23.333], 'Green Leaf']
+[[320.597, 97.101, 13.529], 'Barossa']
+[[25.588, 100.0, 13.333], 'Morocco Brown']
+[[221.25, 10.526, 29.804], 'Mako']
+[[72.632, 14.961, 24.902], 'Kelp']
+[[217.282, 42.739, 47.255], 'San Marino']
+[[200.245, 77.99, 59.02], 'Picton Blue']
+[[305.085, 72.84, 15.882], 'Loulou']
+[[358.235, 32.075, 20.784], 'Crater Brown']
+[[117.0, 12.658, 30.98], 'Gray Asparagus']
+[[207.273, 44.0, 49.02], 'Steel Blue']
+[[0.0, 89.474, 14.902], 'Rustic Red']
+[[359.091, 84.615, 15.294], 'Bulgarian Rose']
+[[289.5, 86.957, 18.039], 'Clairvoyant']
+[[0.0, 44.0, 19.608], 'Cocoa Bean']
+[[0.0, 19.008, 23.725], 'Woody Brown']
+[[27.273, 18.033, 23.922], 'Taupe']
+[[10.82, 71.765, 16.667], 'Van Cleef']
+[[19.615, 55.319, 18.431], 'Brown Derby']
+[[36.522, 46.0, 19.608], 'Metallic Bronze']
+[[67.857, 100.0, 16.471], 'Verdun Green']
+[[203.75, 24.742, 38.039], 'Blue Bayoux']
+[[198.621, 28.431, 40.0], 'Bismark']
+[[32.571, 89.744, 15.294], 'Bracken']
+[[37.714, 89.744, 15.294], 'Deep Bronze']
+[[27.692, 21.311, 23.922], 'Mondo']
+[[345.0, 5.714, 27.451], 'Tundora']
+[[291.429, 4.895, 28.039], 'Gravel']
+[[225.0, 9.756, 32.157], 'Trout']
+[[274.615, 100.0, 25.49], 'Pigment Indigo']
+[[143.333, 10.714, 32.941], 'Nandor']
+[[18.0, 35.714, 21.961], 'Saddle']
+[[222.0, 6.173, 31.765], 'Abbey']
+[[318.947, 97.436, 15.294], 'Blackberry']
+[[347.463, 77.011, 17.059], 'Cab Sav']
+[[22.895, 97.436, 15.294], 'Indian Tan']
+[[351.892, 31.624, 22.941], 'Cowboy']
+[[350.27, 31.624, 22.941], 'Livid Brown']
+[[11.538, 20.312, 25.098], 'Rock']
+[[43.158, 58.763, 19.02], 'Punga']
+[[47.419, 67.391, 18.039], 'Bronzetone']
+[[68.372, 34.959, 24.118], 'Woodland']
+[[0.0, 85.714, 16.471], 'Mahogany']
+[[285.0, 36.364, 25.882], 'Bossanova']
+[[341.053, 13.869, 26.863], 'Matterhorn']
+[[49.091, 73.333, 17.647], 'Bronze Olive']
+[[258.621, 17.365, 32.745], 'Mulled Wine']
+[[109.655, 16.571, 34.314], 'Axolotl']
+[[203.25, 33.898, 46.275], 'Wedgewood']
+[[197.405, 58.744, 56.275], 'Shakespeare']
+[[276.429, 60.0, 27.451], 'Honey Flower']
+[[262.564, 62.567, 36.667], 'Daisy Bush']
+[[226.891, 51.073, 54.314], 'Indigo']
+[[105.818, 29.412, 36.667], 'Fern Green']
+[[130.769, 33.051, 46.275], 'Fruit Salad']
+[[109.907, 46.725, 44.902], 'Apple']
+[[295.714, 9.459, 29.02], 'Mortar']
+[[212.571, 30.435, 45.098], 'Kashmir Blue']
+[[173.684, 19.192, 38.824], 'Cutty Sark']
+[[140.0, 52.174, 54.902], 'Emerald']
+[[343.636, 7.285, 29.608], 'Emperor']
+[[95.51, 28.655, 33.529], 'Chalet Green']
+[[149.302, 20.976, 40.196], 'Como']
+[[194.516, 27.679, 43.922], 'Smalt Blue']
+[[337.317, 100.0, 16.078], 'Castro']
+[[350.571, 74.468, 18.431], 'Maroon Oak']
+[[255.0, 42.308, 40.784], 'Gigas']
+[[296.364, 24.088, 26.863], 'Voodoo']
+[[251.688, 36.15, 41.765], 'Victoria']
+[[111.273, 26.829, 40.196], 'Hippie Green']
+[[358.235, 68.0, 19.608], 'Heath']
+[[29.091, 24.444, 26.471], 'Judge Gray']
+[[51.429, 4.348, 31.569], 'Fuscous Gray']
+[[90.252, 70.414, 33.137], 'Vida Loca']
+[[23.014, 75.258, 19.02], 'Cioccolato']
+[[64.8, 70.093, 20.98], 'Saratoga']
+[[122.5, 12.371, 38.039], 'Finlandia']
+[[213.182, 63.462, 59.216], 'Havelock Blue']
+[[185.769, 44.444, 54.118], 'Fountain Blue']
+[[136.364, 20.183, 42.745], 'Spring Leaves']
+[[35.172, 97.753, 17.451], 'Saddle Brown']
+[[253.846, 7.104, 35.882], 'Scarpa Flow']
+[[115.556, 13.568, 39.02], 'Cactus']
+[[194.483, 35.223, 51.569], 'Hippie Blue']
+[[336.0, 50.847, 23.137], 'Wine Berry']
+[[25.412, 91.398, 18.235], 'Brown Bramble']
+[[0.0, 23.611, 28.235], 'Congo Brown']
+[[26.842, 27.143, 27.451], 'Millbrook']
+[[221.818, 26.829, 48.235], 'Waikawa Gray']
+[[201.429, 28.0, 49.02], 'Horizon']
+[[24.167, 65.455, 21.569], 'Jambalaya']
+[[339.56, 97.849, 18.235], 'Bordeaux']
+[[326.207, 89.691, 19.02], 'Mulberry Wood']
+[[29.67, 97.849, 18.235], 'Carnaby Tan']
+[[237.6, 11.962, 40.98], 'Comet']
+[[11.538, 72.222, 21.176], 'Redwood']
+[[342.353, 10.059, 33.137], 'Don Juan']
+[[48.0, 2.762, 35.49], 'Chicago']
+[[61.538, 26.174, 29.216], 'Verdigris']
+[[92.5, 25.263, 37.255], 'Dingley']
+[[178.235, 26.772, 49.804], 'Breaker Bay']
+[[18.75, 20.513, 30.588], 'Kabul']
+[[58.286, 22.876, 30.0], 'Hemlock']
+[[24.211, 42.857, 26.078], 'Irish Coffee']
+[[240.0, 7.317, 40.196], 'Mid Gray']
+[[217.895, 9.091, 40.98], 'Shuttle Gray']
+[[140.0, 29.032, 51.373], 'Aqua Forest']
+[[175.0, 35.593, 53.725], 'Tradewind']
+[[42.078, 66.957, 22.549], 'Horses Neck']
+[[252.5, 11.65, 40.392], 'Smoky']
+[[154.286, 6.796, 40.392], 'Corduroy']
+[[212.92, 55.122, 59.804], 'Danube']
+[[12.329, 60.331, 23.725], 'Espresso']
+[[329.091, 20.497, 31.569], 'Eggplant']
+[[55.102, 33.793, 28.431], 'Costa Del Sol']
+[[116.757, 16.3, 44.51], 'Glade Green']
+[[358.824, 35.172, 28.431], 'Buccaneer']
+[[20.377, 37.063, 28.039], 'Quincy']
+[[255.789, 32.759, 45.49], 'Butterfly Bush']
+[[46.027, 59.35, 24.118], 'West Coast']
+[[68.276, 16.571, 34.314], 'Finch']
+[[168.0, 21.739, 49.608], 'Patina']
+[[126.429, 36.842, 55.294], 'Fern']
+[[248.66, 40.249, 52.745], 'Blue Violet']
+[[250.435, 10.698, 42.157], 'Dolphin']
+[[60.0, 0.503, 39.02], 'Storm Dust']
+[[76.364, 11.579, 37.255], 'Siam']
+[[204.706, 7.834, 42.549], 'Nevada']
+[[218.54, 79.191, 66.078], 'Cornflower Blue']
+[[187.563, 62.304, 62.549], 'Viking']
+[[353.465, 100.0, 19.804], 'Rosewood']
+[[4.444, 66.942, 23.725], 'Cherrywood']
+[[262.703, 62.185, 46.667], 'Purple Heart']
+[[69.512, 56.164, 28.627], 'Fern Frond']
+[[99.13, 11.005, 40.98], 'Willow Grove']
+[[205.862, 23.2, 50.98], 'Hoki']
+[[319.412, 100.0, 20.0], 'Pompadour']
+[[280.0, 100.0, 30.0], 'Purple']
+[[325.2, 96.154, 20.392], 'Tyrian Purple']
+[[0.0, 72.881, 23.137], 'Dark Tan']
+[[151.139, 34.802, 55.49], 'Silver Tree']
+[[96.0, 100.0, 50.0], 'Bright Green']
+[[120.0, 100.0, 70.0], "Screamin' Green"]
+[[334.8, 94.34, 20.784], 'Black Rose']
+[[246.761, 28.514, 51.176], 'Scampi']
+[[48.0, 2.488, 39.412], 'Ironside Gray']
+[[144.706, 14.167, 47.059], 'Viridian Green']
+[[85.772, 80.541, 36.275], 'Christi']
+[[31.154, 100.0, 20.392], 'Nutmeg Wood Finish']
+[[350.526, 10.053, 37.059], 'Zambezi']
+[[277.5, 7.843, 40.0], 'Salt Box']
+[[331.765, 47.887, 27.843], 'Tawny Port']
+[[321.0, 40.0, 29.412], 'Finn']
+[[342.0, 5.0, 39.216], 'Scorpion']
+[[214.286, 19.522, 50.784], 'Lynch']
+[[22.0, 39.474, 29.804], 'Spice']
+[[50.127, 59.398, 26.078], 'Himalaya']
+[[36.0, 13.369, 36.667], 'Soya Bean']
+[[15.172, 68.504, 24.902], 'Hairy Heath']
+[[267.216, 43.498, 43.725], 'Royal Purple']
+[[30.0, 37.179, 30.588], 'Shingle Fawn']
+[[5.455, 11.458, 37.647], 'Dorado']
+[[205.091, 22.822, 52.745], 'Bermuda Gray']
+[[79.626, 60.452, 34.706], 'Olive Drab']
+[[283.902, 46.067, 34.902], 'Eminence']
+[[186.341, 71.93, 66.471], 'Turquoise Blue']
+[[0.0, 98.182, 21.569], 'Lonestar']
+[[24.0, 12.953, 37.843], 'Pine Cone']
+[[0.0, 0.461, 42.549], 'Dove Gray']
+[[180.0, 14.51, 50.0], 'Juniper']
+[[197.308, 21.667, 52.941], 'Gothic']
+[[3.889, 96.429, 21.961], 'Red Oxide']
+[[6.0, 69.231, 25.49], 'Moccaccino']
+[[28.333, 48.649, 29.02], 'Pickled Bean']
+[[30.833, 48.649, 29.02], 'Dallas']
+[[57.391, 11.675, 38.627], 'Kokoda']
+[[214.286, 8.714, 47.255], 'Pale Sky']
+[[33.939, 80.488, 24.118], 'Cafe Royale']
+[[38.571, 6.731, 40.784], 'Flint']
+[[103.256, 17.842, 47.255], 'Highland']
+[[77.806, 97.484, 31.176], 'Limeade']
+[[173.196, 50.785, 62.549], 'Downy']
+[[0.0, 60.0, 27.451], 'Persian Plum']
+[[30.0, 69.697, 25.882], 'Sepia']
+[[38.286, 88.235, 23.333], 'Antique Bronze']
+[[358.182, 17.277, 37.451], 'Ferra']
+[[35.556, 13.706, 38.627], 'Coffee']
+[[210.0, 12.598, 50.196], 'Slate Gray']
+[[13.805, 100.0, 22.157], 'Cedar Wood Finish']
+[[8.571, 59.155, 27.843], 'Metallic Copper']
+[[273.506, 35.484, 42.549], 'Affair']
+[[262.5, 41.27, 49.412], 'Studio']
+[[31.429, 22.826, 36.078], 'Tobacco Brown']
+[[45.263, 33.728, 33.137], 'Yellow Metal']
+[[46.667, 13.568, 39.02], 'Peat']
+[[58.144, 75.194, 25.294], 'Olivetone']
+[[231.429, 8.502, 48.431], 'Storm Gray']
+[[180.0, 6.224, 47.255], 'Sirocco']
+[[184.779, 66.082, 66.471], 'Aquamarine Blue']
+[[352.566, 98.261, 22.549], 'Venetian Red']
+[[24.179, 41.615, 31.569], 'Old Copper']
+[[51.667, 18.75, 37.647], 'Go Ben']
+[[216.522, 9.163, 49.216], 'Raven']
+[[285.133, 65.318, 33.922], 'Seance']
+[[34.639, 72.932, 26.078], 'Raw Umber']
+[[248.235, 20.988, 52.353], 'Kimberly']
+[[46.667, 13.3, 39.804], 'Crocodile']
+[[63.797, 49.068, 31.569], 'Crete']
+[[135.789, 7.631, 48.824], 'Xanadu']
+[[50.68, 79.845, 25.294], 'Spicy Mustard']
+[[80.769, 11.607, 43.922], 'Limed Ash']
+[[204.0, 6.073, 48.431], 'Rolling Stone']
+[[159.0, 7.937, 49.412], 'Blue Smoke']
+[[127.742, 12.551, 51.569], 'Laurel']
+[[110.426, 43.925, 58.039], 'Mantis']
+[[6.0, 14.706, 40.0], 'Russett']
+[[255.652, 28.395, 52.353], 'Deluge']
+[[324.59, 34.857, 34.314], 'Cosmic']
+[[250.0, 45.714, 58.824], 'Blue Marguerite']
+[[85.663, 78.302, 41.569], 'Lima']
+[[189.828, 73.418, 69.02], 'Sky Blue']
+[[5.263, 91.935, 24.314], 'Dark Burgundy']
+[[0.0, 58.667, 29.412], 'Crown of Thorns']
+[[23.871, 64.138, 28.431], 'Walnut']
+[[38.182, 10.185, 42.353], 'Pablo']
+[[66.186, 60.248, 31.569], 'Pacifika']
+[[143.077, 16.738, 54.314], 'Oxley']
+[[120.0, 60.0, 66.667], 'Pastel Green']
+[[355.966, 98.347, 23.725], 'Japanese Maple']
+[[12.632, 65.517, 28.431], 'Mocha']
+[[15.306, 69.014, 27.843], 'Peanut']
+[[91.111, 11.203, 47.255], 'Camouflage Green']
+[[70.693, 57.714, 34.314], 'Wasabi']
+[[222.727, 32.353, 60.0], 'Ship Cove']
+[[170.233, 18.943, 55.49], 'Sea Nymph']
+[[22.667, 22.843, 38.627], 'Roman Coffee']
+[[303.529, 7.556, 44.118], 'Old Lavender']
+[[270.0, 13.223, 47.451], 'Rum']
+[[304.0, 6.608, 44.51], 'Fedora']
+[[28.696, 10.502, 42.941], 'Sandstone']
+[[187.304, 75.163, 70.0], 'Spray']
+[[331.736, 98.374, 24.118], 'Siren']
+[[259.429, 45.852, 55.098], 'Fuchsia Blue']
+[[0.0, 0.0, 47.843], 'Boulder']
+[[225.484, 30.392, 60.0], 'Wild Blue Yonder']
+[[131.351, 38.542, 62.353], 'De York']
+[[27.049, 98.387, 24.314], 'Red Beech']
+[[30.732, 100.0, 24.118], 'Cinnamon']
+[[49.043, 87.786, 25.686], 'Yukon Gold']
+[[34.286, 2.929, 46.863], 'Tapa']
+[[237.6, 10.46, 53.137], 'Waterloo ']
+[[74.483, 12.554, 45.294], 'Flax Smoke']
+[[128.333, 15.789, 55.294], 'Amulet']
+[[92.174, 27.49, 49.216], 'Asparagus']
+[[11.597, 92.248, 25.294], 'Kenyan Copper']
+[[55.2, 43.353, 33.922], 'Pesto']
+[[255.789, 7.51, 50.392], 'Topaz']
+[[30.0, 0.813, 48.235], 'Concord']
+[[248.571, 2.767, 49.608], 'Jumbo']
+[[66.545, 67.901, 31.765], 'Trendy Green']
+[[187.143, 19.091, 56.863], 'Gumbo']
+[[162.692, 24.762, 58.824], 'Acapulco']
+[[183.81, 31.658, 60.98], 'Neptune']
+[[13.714, 72.414, 28.431], 'Pueblo']
+[[141.818, 20.37, 57.647], 'Bay Leaf']
+[[203.115, 88.406, 72.941], 'Malibu']
+[[168.132, 53.846, 66.863], 'Bermuda']
+[[21.143, 71.429, 28.824], 'Copper Canyon']
+[[343.269, 69.333, 29.412], 'Claret']
+[[26.88, 96.899, 25.294], 'Peru Tan']
+[[337.241, 12.889, 44.118], 'Falcon']
+[[270.0, 7.874, 49.804], 'Mobster']
+[[245.806, 51.381, 64.51], 'Moody Blue']
+[[90.118, 100.0, 50.0], 'Chartreuse']
+[[159.844, 100.0, 74.902], 'Aquamarine']
+[[0.0, 100.0, 25.098], 'Maroon']
+[[329.231, 84.173, 27.255], 'Rose Bud Cherry']
+[[0.0, 68.421, 29.804], 'Falu Red']
+[[12.99, 61.006, 31.176], 'Red Robin']
+[[289.213, 44.724, 39.02], 'Vivid Violet']
+[[25.545, 65.161, 30.392], 'Russet']
+[[42.857, 2.811, 48.824], 'Friar Gray']
+[[60.0, 100.0, 25.098], 'Olive']
+[[0.0, 0.0, 50.196], 'Gray']
+[[174.118, 25.123, 60.196], 'Gulf Stream']
+[[195.0, 36.559, 63.529], 'Glacier']
+[[196.981, 71.622, 70.98], 'Seagull']
+[[15.529, 49.133, 33.922], 'Nutmeg']
+[[350.526, 7.95, 46.863], 'Spicy Pink']
+[[342.857, 5.738, 47.843], 'Empress']
+[[130.435, 10.044, 55.098], 'Spanish Green']
+[[20.69, 12.554, 45.294], 'Sand Dune']
+[[165.0, 1.626, 51.765], 'Gunsmoke']
+[[86.897, 11.462, 50.392], 'Battleship Gray']
+[[354.34, 67.949, 30.588], 'Merlot']
+[[37.647, 24.171, 41.373], 'Shadow']
+[[90.39, 31.174, 51.569], 'Chelsea Cucumber']
+[[172.208, 45.029, 66.471], 'Monte Carlo']
+[[307.952, 45.856, 35.49], 'Plum']
+[[180.0, 12.844, 57.255], 'Granny Smith']
+[[242.727, 53.659, 67.843], 'Chetwode Blue']
+[[57.143, 8.571, 48.039], 'Bandicoot']
+[[202.857, 20.792, 60.392], 'Bali Hai']
+[[186.761, 41.04, 66.078], 'Half Baked']
+[[352.782, 98.519, 26.471], 'Red Devil']
+[[0.0, 38.144, 38.039], 'Lotus']
+[[9.73, 38.144, 38.039], 'Ironstone']
+[[27.115, 63.415, 32.157], 'Bull Shot']
+[[36.774, 86.111, 28.235], 'Rusty Nail']
+[[68.571, 8.3, 49.608], 'Bitter']
+[[206.4, 11.521, 57.451], 'Regent Gray']
+[[328.947, 73.077, 30.588], 'Disco']
+[[16.8, 10.204, 48.039], 'Americano']
+[[5.0, 4.762, 50.588], 'Hurricane']
+[[204.0, 4.348, 54.902], 'Oslo Gray']
+[[78.947, 50.0, 44.706], 'Sushi']
+[[14.571, 34.653, 39.608], 'Spicy Mix']
+[[37.864, 60.947, 33.137], 'Kumera']
+[[312.0, 2.058, 52.353], 'Suva Gray']
+[[67.5, 16.529, 47.451], 'Avocado']
+[[336.0, 44.974, 37.059], 'Camelot']
+[[351.852, 41.969, 37.843], 'Solid Pink']
+[[329.143, 34.314, 40.0], 'Cannon Pink']
+[[34.286, 11.382, 48.235], 'Makara']
+[[8.824, 58.621, 34.118], 'Burnt Umber']
+[[253.939, 54.696, 64.51], 'True V']
+[[50.0, 17.949, 45.882], 'Clay Creek']
+[[308.571, 2.905, 52.745], 'Monsoon']
+[[120.0, 2.183, 55.098], 'Stack']
+[[212.621, 78.626, 74.314], 'Jordy Blue']
+[[272.706, 100.0, 50.0], 'Electric Violet']
+[[347.273, 90.411, 28.627], 'Monarch']
+[[45.0, 85.333, 29.412], 'Corn Harvest']
+[[44.444, 10.757, 49.216], 'Olive Haze']
+[[27.692, 5.306, 51.961], 'Schooner']
+[[32.727, 4.527, 52.353], 'Natural Gray']
+[[137.647, 7.907, 57.843], 'Mantle']
+[[227.879, 74.436, 73.922], 'Portage']
+[[131.111, 13.171, 59.804], 'Envy']
+[[172.0, 14.851, 60.392], 'Cascade']
+[[170.769, 64.539, 72.353], 'Riptide']
+[[320.444, 93.103, 28.431], 'Cardinal Pink']
+[[15.484, 49.733, 36.667], 'Mule Fawn']
+[[22.143, 42.857, 38.431], 'Potters Clay']
+[[288.98, 19.679, 48.824], 'Trendy Pink']
+[[344.46, 97.203, 28.039], 'Paprika']
+[[3.529, 43.147, 38.627], 'Sanguine Brown']
+[[0.0, 38.235, 40.0], 'Tosca']
+[[27.907, 17.992, 46.863], 'Cement']
+[[50.4, 9.881, 50.392], 'Granite Green']
+[[231.0, 9.615, 59.216], 'Manatee']
+[[214.286, 38.182, 67.647], 'Polo Blue']
+[[0.0, 100.0, 27.843], 'Red Berry']
+[[25.179, 65.116, 33.725], 'Rope']
+[[358.065, 12.253, 49.608], 'Opium']
+[[31.25, 20.339, 46.275], 'Domino']
+[[292.0, 6.329, 53.529], 'Mamba']
+[[205.882, 29.143, 65.686], 'Nepal']
+[[348.936, 97.241, 28.431], 'Pohutukawa']
+[[7.174, 47.423, 38.039], 'El Salva']
+[[28.372, 82.166, 30.784], 'Korma']
+[[26.4, 10.04, 51.176], 'Squirrel']
+[[151.268, 46.405, 70.0], 'Vista Blue']
+[[346.667, 100.0, 28.235], 'Burgundy']
+[[0.0, 65.517, 34.118], 'Old Brick']
+[[8.571, 11.2, 50.98], 'Hemp']
+[[19.355, 12.253, 50.392], 'Almond Frost']
+[[57.931, 43.284, 39.412], 'Sycamore']
+[[355.89, 100.0, 28.627], 'Sangria']
+[[18.053, 63.128, 35.098], 'Cumin']
+[[21.818, 23.207, 46.471], 'Beaver']
+[[34.839, 12.45, 51.176], 'Stonewall']
+[[309.231, 5.628, 54.706], 'Venus']
+[[259.626, 59.777, 64.902], 'Medium Purple']
+[[200.69, 67.442, 74.706], 'Cornflower']
+[[149.211, 54.286, 72.549], 'Algae Green']
+[[0.0, 35.16, 42.941], 'Copper Rust']
+[[37.714, 14.056, 51.176], 'Arrowtown']
+[[351.544, 100.0, 29.216], 'Scarlett']
+[[316.8, 20.161, 48.627], 'Strikemaster']
+[[280.0, 1.408, 58.235], 'Mountain Mist']
+[[350.4, 100.0, 29.412], 'Carmine']
+[[30.0, 100.0, 29.412], 'Brown']
+[[22.623, 25.523, 46.863], 'Leather']
+[[269.032, 29.808, 59.216], "Purple Mountain's Majesty"]
+[[267.458, 28.78, 59.804], 'Lavender Purple']
+[[156.667, 9.375, 62.353], 'Pewter']
+[[154.054, 21.387, 66.078], 'Summer Green']
+[[3.103, 23.77, 47.843], 'Au Chico']
+[[273.529, 31.481, 57.647], 'Wisteria']
+[[80.25, 64.0, 49.02], 'Atlantis']
+[[336.264, 42.723, 41.765], 'Vin Rouge']
+[[262.737, 51.913, 64.118], 'Lilac Bush']
+[[352.727, 13.808, 53.137], 'Bazaar']
+[[48.96, 69.832, 35.098], 'Hacienda']
+[[40.0, 13.808, 53.137], 'Pale Oyster']
+[[120.0, 100.0, 79.804], 'Mint Green']
+[[320.0, 100.0, 30.0], 'Fresh Eggplant']
+[[300.0, 80.0, 33.333], 'Violet Eggplant']
+[[1.343, 77.907, 33.725], 'Tamarillo']
+[[8.219, 91.25, 31.373], 'Totem Pole']
+[[0.0, 20.0, 50.0], 'Copper Rose']
+[[270.0, 50.0, 60.0], 'Amethyst']
+[[323.226, 13.191, 53.922], 'Mountbatten Pink']
+[[240.0, 33.333, 70.0], 'Blue Bell']
+[[11.803, 65.591, 36.471], 'Prairie Sand']
+[[13.684, 22.709, 49.216], 'Toast']
+[[51.429, 14.768, 53.529], 'Gurkha']
+[[86.571, 33.333, 58.824], 'Olivine']
+[[165.0, 24.691, 68.235], 'Shadow Green']
+[[26.842, 96.203, 30.98], 'Oregon']
+[[72.0, 7.177, 59.02], 'Lemon Grass']
+[[358.286, 50.725, 40.588], 'Stiletto']
+[[28.444, 75.419, 35.098], 'Hawaiian Tan']
+[[205.385, 15.294, 66.667], 'Gull Gray']
+[[72.0, 91.133, 39.804], 'Pistachio']
+[[112.208, 55.396, 72.745], 'Granny Smith Apple']
+[[195.918, 100.0, 80.784], 'Anakiwa']
+[[31.154, 97.5, 31.373], 'Chelsea Gem']
+[[17.234, 42.342, 43.529], 'Sepia Skin']
+[[74.0, 14.286, 58.824], 'Sage']
+[[64.783, 69.0, 39.216], 'Citron']
+[[215.745, 31.973, 71.176], 'Rock Blue']
+[[181.818, 51.563, 74.902], 'Morning Glory']
+[[12.462, 69.149, 36.863], 'Cognac']
+[[46.718, 70.053, 36.667], 'Reef Gold']
+[[60.0, 1.538, 61.765], 'Star Dust']
+[[236.667, 10.345, 65.882], 'Santas Gray']
+[[175.714, 41.176, 73.333], 'Sinbad']
+[[105.926, 54.362, 70.784], 'Feijoa']
+[[8.873, 79.775, 34.902], 'Tabasco']
+[[42.162, 85.057, 34.118], 'Buttered Rum']
+[[204.0, 11.905, 67.059], 'Hit Gray']
+[[71.551, 90.338, 40.588], 'Citrus']
+[[176.842, 43.511, 74.314], 'Aqua Island']
+[[170.833, 62.069, 77.255], 'Water Leaf']
+[[319.63, 100.0, 31.765], 'Flirt']
+[[331.456, 46.606, 43.333], 'Rouge']
+[[21.29, 40.26, 45.294], 'Cape Palliser']
+[[211.765, 10.059, 66.863], 'Gray Chateau']
+[[165.0, 6.897, 65.882], 'Edward']
+[[7.5, 17.857, 56.078], 'Pharlap']
+[[264.828, 16.201, 64.902], 'Amethyst Smoke']
+[[188.108, 67.273, 78.431], 'Blizzard Blue']
+[[60.0, 3.704, 62.941], 'Delta']
+[[237.447, 34.815, 73.529], 'Wistful']
+[[70.154, 28.889, 55.882], 'Green Smoke']
+[[327.662, 87.5, 34.51], 'Jazzberry Jam']
+[[30.0, 10.0, 60.784], 'Zorba']
+[[71.937, 88.837, 42.157], 'Bahia']
+[[6.716, 67.677, 38.824], 'Roof Terracotta']
+[[21.12, 60.386, 40.588], 'Paarl']
+[[38.4, 29.644, 50.392], 'Barley Corn']
+[[33.333, 20.179, 56.275], 'Donkey Brown']
+[[40.0, 6.316, 62.745], 'Dawn']
+[[0.0, 63.725, 40.0], 'Mexican Red']
+[[44.878, 58.294, 41.373], 'Luxor Gold']
+[[28.323, 92.0, 34.314], 'Rich Gold']
+[[32.653, 77.778, 37.059], 'Reno Sand']
+[[0.0, 25.957, 53.922], 'Coral Tree']
+[[348.75, 8.421, 62.745], 'Dusty Gray']
+[[251.688, 60.63, 75.098], 'Dull Lavender']
+[[54.194, 15.122, 59.804], 'Tallow']
+[[80.0, 10.0, 64.706], 'Bud']
+[[72.727, 17.098, 62.157], 'Locust']
+[[102.0, 18.519, 68.235], 'Norway']
+[[141.356, 51.304, 77.451], 'Chinook']
+[[47.5, 12.245, 61.569], 'Gray Olive']
+[[226.154, 8.176, 68.824], 'Aluminium']
+[[219.231, 17.808, 71.373], 'Cadet Blue']
+[[82.759, 16.201, 64.902], 'Schist']
+[[185.455, 14.667, 70.588], 'Tower Gray']
+[[222.74, 73.737, 80.588], 'Perano']
+[[171.724, 20.28, 71.961], 'Opal']
+[[341.739, 51.111, 44.118], 'Night Shadz']
+[[22.635, 96.532, 33.922], 'Fire']
+[[36.456, 31.727, 51.176], 'Muesli']
+[[30.508, 25.764, 55.098], 'Sandal']
+[[312.0, 2.857, 65.686], 'Shady Lady']
+[[241.667, 26.471, 73.333], 'Logan']
+[[235.385, 8.28, 69.216], 'Spun Pearl']
+[[196.0, 54.545, 78.431], 'Regent St Blue']
+[[153.429, 70.0, 80.392], 'Magic Mint']
+[[326.024, 94.318, 34.51], 'Lipstick']
+[[328.739, 53.363, 43.725], 'Royal Heath']
+[[28.163, 22.581, 57.451], 'Sandrift']
+[[251.579, 42.857, 73.922], 'Cold Purple']
+[[31.429, 11.111, 62.941], 'Bronco']
+[[36.279, 34.127, 50.588], 'Limed Oak']
+[[266.557, 38.365, 68.824], 'East Side']
+[[53.913, 66.99, 40.392], 'Lemon Ginger']
+[[40.0, 12.632, 62.745], 'Napa']
+[[48.947, 18.627, 60.0], 'Hillary']
+[[27.692, 7.263, 64.902], 'Cloudy']
+[[0.0, 0.0, 67.451], 'Silver Chalice']
+[[76.098, 22.162, 63.725], 'Swamp Green']
+[[129.677, 22.963, 73.529], 'Spring Rain']
+[[80.417, 67.925, 58.431], 'Conifer']
+[[123.396, 46.903, 77.843], 'Celadon']
+[[38.219, 73.0, 39.216], 'Mandalay']
+[[211.667, 28.125, 74.902], 'Casper']
+[[120.0, 43.86, 77.647], 'Moss Green']
+[[144.211, 53.271, 79.02], 'Padua']
+[[83.654, 100.0, 59.216], 'Green Yellow']
+[[344.571, 43.21, 47.647], 'Hippie Pink']
+[[27.042, 68.932, 40.392], 'Desert']
+[[320.87, 22.115, 59.216], 'Bouquet']
+[[5.41, 53.509, 44.706], 'Medium Carmine']
+[[5.556, 44.628, 47.451], 'Apple Blossom']
+[[14.336, 47.679, 46.471], 'Brown Rust']
+[[34.468, 37.008, 50.196], 'Driftwood']
+[[45.344, 59.817, 42.941], 'Alpine']
+[[53.469, 72.414, 39.804], 'Lucky']
+[[7.059, 9.605, 65.294], 'Martini']
+[[226.667, 5.96, 70.392], 'Bombay']
+[[220.0, 35.593, 76.863], 'Pigeon Post']
+[[342.0, 39.683, 49.412], 'Cadillac']
+[[5.87, 36.8, 50.98], 'Matrix']
+[[334.39, 34.167, 52.941], 'Tapestry']
+[[33.571, 91.304, 36.078], 'Mai Tai']
+[[11.111, 14.595, 63.725], 'Del Rio']
+[[186.667, 51.923, 79.608], 'Powder Blue']
+[[74.712, 84.553, 48.235], 'Inch Worm']
+[[0.0, 100.0, 34.706], 'Bright Red']
+[[22.771, 88.298, 36.863], 'Vesuvius']
+[[31.084, 88.298, 36.863], 'Pumpkin Skin']
+[[17.053, 37.849, 50.784], 'Santa Fe']
+[[38.25, 33.898, 53.725], 'Teak']
+[[139.592, 45.794, 79.02], 'Fringy Flower']
+[[168.358, 75.281, 82.549], 'Ice Cold']
+[[345.799, 90.374, 36.667], 'Shiraz']
+[[253.973, 63.478, 77.451], 'Biloba Flower']
+[[1.739, 62.727, 43.137], 'Tall Poppy']
+[[23.625, 80.808, 38.824], 'Fiery Orange']
+[[42.209, 92.473, 36.471], 'Hot Toddy']
+[[52.0, 16.484, 64.314], 'Taupe Gray']
+[[64.746, 84.689, 40.98], 'La Rioja']
+[[0.462, 56.522, 45.098], 'Well Read']
+[[341.455, 44.0, 49.02], 'Blush']
+[[187.742, 26.05, 76.667], 'Jungle Mist']
+[[346.567, 31.163, 57.843], 'Turkish Rose']
+[[275.106, 57.317, 67.843], 'Lavender']
+[[38.889, 26.733, 60.392], 'Mongoose']
+[[58.652, 37.553, 53.529], 'Olive Green']
+[[171.724, 24.37, 76.667], 'Jet Stream']
+[[165.818, 59.14, 81.765], 'Cruise']
+[[333.383, 57.576, 45.294], 'Hibiscus']
+[[10.0, 17.045, 65.49], 'Thatch']
+[[49.091, 18.436, 64.902], 'Heathered Gray']
+[[70.909, 13.75, 68.627], 'Eagle']
+[[208.846, 55.319, 81.569], 'Spindle']
+[[138.621, 24.786, 77.059], 'Gum Leaf']
+[[18.107, 85.787, 38.627], 'Rust']
+[[32.967, 38.723, 53.922], 'Muddy Waters']
+[[52.27, 80.296, 39.804], 'Sahara']
+[[48.0, 39.749, 53.137], 'Husk']
+[[0.0, 4.0, 70.588], 'Nobel']
+[[211.2, 21.008, 76.667], 'Heather']
+[[127.368, 65.517, 82.941], 'Madang']
+[[4.333, 95.745, 36.863], 'Milano Red']
+[[28.872, 56.596, 46.078], 'Copper']
+[[57.692, 35.455, 56.863], 'Gimblet']
+[[93.75, 11.429, 72.549], 'Green Spring']
+[[65.941, 45.291, 56.275], 'Celery']
+[[203.077, 84.416, 84.902], 'Sail']
+[[3.186, 44.664, 50.392], 'Chestnut']
+[[8.43, 48.594, 48.824], 'Crail']
+[[41.793, 64.444, 44.118], 'Marigold']
+[[67.333, 43.269, 59.216], 'Wild Willow']
+[[92.143, 20.29, 72.941], 'Rainee']
+[[0.0, 98.93, 36.667], 'Guardsman Red']
+[[19.655, 87.879, 38.824], 'Rock Spray']
+[[31.154, 72.222, 42.353], 'Bourbon']
+[[40.656, 96.825, 37.059], 'Pirate Gold']
+[[37.5, 14.815, 68.235], 'Nomad']
+[[188.0, 12.195, 75.882], 'Submarine']
+[[190.476, 84.0, 85.294], 'Charlotte']
+[[323.824, 57.143, 46.667], 'Medium Red Violet']
+[[6.429, 29.167, 62.353], 'Brandy Rose']
+[[66.332, 91.705, 42.549], 'Rio Grande']
+[[132.857, 25.926, 78.824], 'Surf']
+[[147.692, 10.744, 76.275], 'Powder Ash']
+[[20.14, 60.851, 46.078], 'Tuscany']
+[[11.489, 26.257, 64.902], 'Quicksand']
+[[25.714, 13.725, 70.0], 'Silk']
+[[36.429, 17.5, 68.627], 'Malta']
+[[270.0, 15.152, 74.118], 'Chatelle']
+[[244.286, 25.926, 78.824], 'Lavender Gray']
+[[240.0, 7.317, 75.882], 'French Gray']
+[[91.429, 16.031, 74.314], 'Clay Ash']
+[[197.647, 14.783, 77.451], 'Loblolly']
+[[195.0, 94.118, 86.667], 'French Pass']
+[[289.655, 19.463, 70.784], 'London Hue']
+[[346.667, 6.475, 72.745], 'Pink Swan']
+[[69.187, 88.936, 46.078], 'Fuego']
+[[26.702, 100.0, 37.451], 'Rose of Sharon']
+[[32.0, 10.49, 71.961], 'Tide']
+[[242.308, 25.0, 79.608], 'Blue Haze']
+[[200.0, 2.4, 75.49], 'Silver Sand']
+[[63.571, 71.795, 45.882], 'Key Lime Pie']
+[[192.0, 37.634, 81.765], 'Ziggurat']
+[[75.059, 100.0, 50.0], 'Lime']
+[[6.786, 77.778, 42.353], 'Thunderbird']
+[[7.007, 55.466, 48.431], 'Mojo']
+[[359.063, 33.684, 62.745], 'Old Rose']
+[[0.0, 0.0, 75.294], 'Silver']
+[[103.846, 22.807, 77.647], 'Pale Leaf']
+[[102.353, 30.357, 78.039], 'Pixie Green']
+[[18.101, 86.473, 40.588], 'Tia Maria']
+[[300.0, 46.781, 54.314], 'Fuchsia Pink']
+[[49.524, 95.939, 38.627], 'Buddha Gold']
+[[39.31, 18.954, 70.0], 'Bison Hide']
+[[35.294, 12.057, 72.353], 'Tea']
+[[252.0, 13.043, 77.451], 'Gray Suit']
+[[93.846, 32.773, 76.667], 'Sprout']
+[[84.31, 79.452, 71.373], 'Sulu']
+[[32.67, 96.954, 38.627], 'Indochine']
+[[33.267, 45.291, 56.275], 'Twine']
+[[35.0, 8.955, 73.725], 'Cotton Seed']
+[[135.0, 7.018, 77.647], 'Pumice']
+[[175.263, 45.238, 83.529], 'Jagged Ice']
+[[345.556, 71.053, 44.706], 'Maroon Flush']
+[[37.2, 29.412, 66.667], 'Indian Khaki']
+[[330.0, 3.226, 75.686], 'Pale Slate']
+[[60.0, 4.762, 75.294], 'Gray Nickel']
+[[222.857, 41.176, 83.333], 'Periwinkle Gray']
+[[180.0, 13.208, 79.216], 'Tiara']
+[[211.111, 81.818, 87.059], 'Tropical Blue']
+[[349.88, 73.451, 44.314], 'Cardinal']
+[[0.541, 48.472, 55.098], 'Fuzzy Wuzzy Brown']
+[[21.754, 77.376, 43.333], 'Orange Roughy']
+[[60.0, 6.349, 75.294], 'Mist Gray']
+[[82.5, 25.397, 75.294], 'Coriander']
+[[168.75, 68.571, 86.275], 'Mint Tulip']
+[[328.033, 51.261, 53.333], 'Mulberry']
+[[43.804, 70.563, 45.294], 'Nugget']
+[[38.361, 51.261, 53.333], 'Tussock']
+[[133.636, 23.404, 81.569], 'Sea Mist']
+[[76.311, 63.19, 68.039], 'Yellow Green']
+[[351.765, 62.963, 47.647], 'Brick Red']
+[[4.615, 44.39, 59.804], 'Contessa']
+[[0.0, 31.737, 67.255], 'Oriental Pink']
+[[45.366, 51.899, 53.529], 'Roti']
+[[49.412, 12.977, 74.314], 'Ash']
+[[70.909, 9.091, 76.275], 'Kangaroo']
+[[68.972, 86.992, 48.235], 'Las Palmas']
+[[351.735, 97.03, 39.608], 'Monza']
+[[322.247, 80.909, 43.137], 'Red Violet']
+[[42.162, 24.832, 70.784], 'Coral Reef']
+[[245.806, 100.0, 87.843], 'Melrose']
+[[37.5, 6.667, 76.471], 'Cloud']
+[[231.429, 14.286, 80.784], 'Ghost']
+[[65.902, 37.888, 68.431], 'Pine Glade']
+[[196.0, 36.585, 83.922], 'Botticelli']
+[[22.424, 47.368, 59.02], 'Antique Brass']
+[[300.0, 25.676, 70.98], 'Lilac']
+[[46.875, 66.667, 47.059], 'Hokey Pokey']
+[[318.0, 21.429, 72.549], 'Lily']
+[[48.125, 46.602, 59.608], 'Laser']
+[[153.333, 32.53, 83.725], 'Edgewater']
+[[23.133, 70.339, 46.275], 'Piper']
+[[42.333, 81.081, 43.529], 'Pizza']
+[[281.0, 46.154, 74.51], 'Light Wisteria']
+[[30.0, 29.87, 69.804], 'Rodeo Dust']
+[[48.0, 50.459, 57.255], 'Sundance']
+[[53.239, 56.8, 50.98], 'Earls Green']
+[[21.429, 11.475, 76.078], 'Silver Rust']
+[[153.75, 17.391, 81.961], 'Conch']
+[[94.839, 100.0, 81.765], 'Reef']
+[[151.111, 100.0, 89.412], 'Aero Blue']
+[[359.6, 59.055, 49.804], 'Flush Mahogany']
+[[53.077, 55.085, 53.725], 'Turmeric']
+[[153.333, 20.455, 82.745], 'Paris White']
+[[66.256, 89.03, 46.471], 'Bitter Lemon']
+[[154.286, 35.897, 84.706], 'Skeptic']
+[[334.0, 36.585, 67.843], 'Viola']
+[[57.143, 16.8, 75.49], 'Foggy Gray']
+[[73.714, 28.455, 75.882], 'Green Mist']
+[[161.25, 18.182, 82.745], 'Nebula']
+[[0.0, 60.0, 50.0], 'Persian Red']
+[[25.0, 100.0, 40.0], 'Burnt Orange']
+[[30.0, 71.429, 46.667], 'Ochre']
+[[345.0, 40.0, 66.667], 'Puce']
+[[56.667, 26.087, 72.941], 'Thistle Green']
+[[240.0, 100.0, 90.0], 'Periwinkle']
+[[72.0, 100.0, 50.0], 'Electric Lime']
+[[25.463, 100.0, 40.196], 'Tenn']
+[[0.0, 53.052, 58.235], 'Chestnut Rose']
+[[33.293, 66.667, 48.235], 'Brandy Punch']
+[[193.2, 100.0, 90.196], 'Onahau']
+[[40.0, 39.13, 68.431], 'Sorrell Brown']
+[[0.0, 16.949, 76.863], 'Cold Turkey']
+[[48.197, 38.365, 68.824], 'Yuma']
+[[49.231, 28.467, 73.137], 'Chino']
+[[7.2, 34.247, 71.373], 'Eunry']
+[[49.459, 60.656, 52.157], 'Old Gold']
+[[120.0, 15.663, 83.725], 'Tasman']
+[[128.182, 29.73, 85.49], 'Surf Crest']
+[[171.429, 77.778, 89.412], 'Humming Bird']
+[[171.628, 81.132, 89.608], 'Scandal']
+[[26.765, 96.226, 41.569], 'Red Stage']
+[[328.485, 51.295, 62.157], 'Hopbush']
+[[33.789, 84.071, 44.314], 'Meteor']
+[[258.621, 80.556, 85.882], 'Perfume']
+[[265.946, 41.573, 82.549], 'Prelude']
+[[100.0, 61.538, 84.706], 'Tea Green']
+[[38.242, 77.119, 46.275], 'Geebung']
+[[32.195, 30.827, 73.922], 'Vanilla']
+[[37.241, 23.967, 76.275], 'Soft Amber']
+[[67.5, 8.163, 80.784], 'Celeste']
+[[235.0, 15.0, 84.314], 'Mischka']
+[[65.763, 75.319, 53.922], 'Pear']
+[[25.0, 75.0, 47.059], 'Hot Cinnamon']
+[[23.571, 60.87, 54.902], 'Raw Sienna']
+[[346.154, 36.62, 72.157], 'Careys Pink']
+[[34.286, 43.75, 68.627], 'Tan']
+[[67.164, 47.518, 72.353], 'Deco']
+[[140.0, 66.667, 89.412], 'Blue Romance']
+[[91.667, 83.721, 83.137], 'Gossip']
+[[40.8, 22.124, 77.843], 'Sisal']
+[[34.286, 13.725, 80.0], 'Swirl']
+[[340.0, 52.747, 64.314], 'Charm']
+[[11.351, 30.081, 75.882], 'Clam Shell']
+[[42.254, 45.223, 69.216], 'Straw']
+[[38.182, 33.846, 74.51], 'Akaroa']
+[[57.789, 81.197, 45.882], 'Bird Flower']
+[[204.0, 6.173, 84.118], 'Iron']
+[[192.857, 19.444, 85.882], 'Geyser']
+[[219.0, 86.957, 90.98], 'Hawkes Blue']
+[[19.718, 100.0, 41.765], 'Grenadier']
+[[343.235, 44.737, 70.196], 'Can Can']
+[[25.294, 54.839, 63.529], 'Whiskey']
+[[56.25, 43.243, 70.98], 'Winter Hazel']
+[[145.455, 64.706, 90.0], 'Granny Apple']
+[[6.923, 48.75, 68.627], 'My Pink']
+[[51.207, 58.586, 61.176], 'Tacha']
+[[252.0, 68.966, 88.627], 'Moon Raker']
+[[60.0, 5.747, 82.941], 'Quill Gray']
+[[127.317, 100.0, 91.961], 'Snowy Mint']
+[[2.727, 52.381, 67.059], 'New York Pink']
+[[41.905, 44.056, 71.961], 'Pavlova']
+[[248.936, 100.0, 90.784], 'Fog']
+[[4.845, 67.364, 53.137], 'Valencia']
+[[12.821, 60.0, 61.765], 'Japonica']
+[[300.0, 24.272, 79.804], 'Thistle']
+[[308.182, 22.0, 80.392], 'Maverick']
+[[176.667, 85.714, 91.765], 'Foam']
+[[342.917, 65.455, 56.863], 'Cabaret']
+[[17.576, 56.571, 65.686], 'Burning Sand']
+[[29.032, 44.928, 72.941], 'Cameo']
+[[42.0, 11.628, 83.137], 'Timberwolf']
+[[66.667, 27.835, 80.98], 'Tana']
+[[216.429, 58.333, 90.588], 'Link Water']
+[[192.632, 100.0, 92.549], 'Mabel']
+[[329.643, 69.421, 52.549], 'Cerise']
+[[12.963, 68.644, 53.725], 'Flame Pea']
+[[26.636, 96.396, 43.529], 'Bamboo']
+[[16.078, 67.401, 55.49], 'Red Damask']
+[[302.264, 58.889, 64.706], 'Orchid']
+[[18.261, 60.847, 62.941], 'Copperfield']
+[[42.903, 74.4, 49.02], 'Golden Grass']
+[[109.091, 36.667, 88.235], 'Zanah']
+[[170.769, 54.167, 90.588], 'Iceberg']
+[[188.108, 100.0, 92.745], 'Oyster Bay']
+[[342.302, 65.877, 58.627], 'Cranberry']
+[[4.8, 51.02, 71.176], 'Petite Orchid']
+[[28.32, 63.452, 61.373], 'Di Serria']
+[[0.0, 0.0, 85.882], 'Alto']
+[[168.333, 100.0, 92.941], 'Frosted Mint']
+[[348.0, 83.333, 47.059], 'Crimson']
+[[5.68, 70.711, 53.137], 'Punch']
+[[47.885, 89.655, 45.49], 'Galliano']
+[[348.0, 36.364, 78.431], 'Blossom']
+[[57.987, 68.037, 57.059], 'Wattle']
+[[42.0, 12.5, 84.314], 'Westar']
+[[63.529, 20.0, 83.333], 'Moon Mist']
+[[77.895, 61.29, 81.765], 'Caper']
+[[162.0, 40.0, 90.196], 'Swans Down']
+[[7.5, 10.526, 85.098], 'Swiss Coffee']
+[[162.857, 70.0, 92.157], 'White Ice']
+[[342.659, 72.385, 53.137], 'Cerise Red']
+[[1.429, 65.625, 62.353], 'Roman']
+[[23.871, 58.491, 68.824], 'Tumbleweed']
+[[49.36, 84.232, 47.255], 'Gold Tips']
+[[35.833, 52.174, 72.941], 'Brandy']
+[[12.5, 26.667, 82.353], 'Wafer']
+[[49.655, 46.774, 75.686], 'Sapling']
+[[57.889, 81.224, 48.039], 'Barberry']
+[[71.351, 41.573, 82.549], 'Beryl Green']
+[[198.182, 100.0, 93.529], 'Pattens Blue']
+[[286.286, 100.0, 72.549], 'Heliotrope']
+[[42.321, 63.636, 65.49], 'Apache']
+[[50.357, 63.636, 65.49], 'Chenin']
+[[315.0, 20.0, 84.314], 'Lola']
+[[103.333, 32.143, 89.02], 'Willow Brook']
+[[67.529, 100.0, 50.0], 'Chartreuse Yellow']
+[[276.456, 100.0, 84.51], 'Mauve']
+[[43.636, 71.296, 57.647], 'Anzac']
+[[38.333, 63.529, 66.667], 'Harvest Gold']
+[[34.4, 54.745, 73.137], 'Calico']
+[[180.0, 100.0, 93.922], 'Baby Blue']
+[[1.452, 67.391, 63.922], 'Sunglo']
+[[42.24, 67.568, 63.725], 'Equator']
+[[345.455, 35.484, 81.765], 'Pink Flare']
+[[78.75, 24.242, 87.059], 'Periglacial Blue']
+[[84.545, 34.375, 87.451], 'Kidnapper']
+[[140.0, 53.846, 92.353], 'Tara']
+[[352.817, 71.0, 60.784], 'Mandy']
+[[10.222, 69.948, 62.157], 'Terracotta']
+[[34.203, 84.49, 48.039], 'Golden Bell']
+[[325.5, 57.971, 72.941], 'Shocking']
+[[36.832, 80.8, 49.02], 'Dixie']
+[[313.714, 54.687, 74.902], 'Light Orchid']
+[[268.571, 36.842, 88.824], 'Snuff']
+[[190.909, 23.404, 90.784], 'Mystic']
+[[155.294, 41.463, 91.961], 'Apple Green']
+[[337.5, 90.756, 46.667], 'Razzmatazz']
+[[354.921, 77.143, 51.961], 'Alizarin Crimson']
+[[4.8, 75.758, 54.706], 'Cinnabar']
+[[0.0, 39.785, 81.765], 'Cavern Pink']
+[[114.0, 50.0, 92.157], 'Peppermint']
+[[71.681, 90.4, 75.49], 'Mindaro']
+[[341.455, 67.073, 67.843], 'Deep Blush']
+[[39.437, 87.654, 47.647], 'Gamboge']
+[[326.471, 38.636, 82.745], 'Melanie']
+[[317.143, 28.0, 85.294], 'Twilight']
+[[28.333, 40.0, 82.353], 'Bone']
+[[55.052, 78.226, 51.373], 'Sunflower']
+[[40.0, 45.455, 80.588], 'Grain Brown']
+[[48.493, 57.48, 75.098], 'Zombie']
+[[130.0, 50.0, 92.941], 'Frostee']
+[[95.217, 100.0, 90.98], 'Snow Flurry']
+[[348.065, 78.151, 53.333], 'Amaranth']
+[[31.188, 79.528, 50.196], 'Zest']
+[[6.429, 35.0, 84.314], 'Dust Storm']
+[[39.0, 43.478, 81.961], 'Stark White']
+[[45.556, 50.943, 79.216], 'Hampton']
+[[348.0, 8.772, 88.824], 'Bon Jour']
+[[0.0, 0.0, 89.804], 'Mercury']
+[[171.0, 62.5, 93.725], 'Polar']
+[[19.824, 97.425, 45.686], 'Trinidad']
+[[33.913, 64.789, 72.157], 'Gold Sand']
+[[23.077, 56.522, 77.451], 'Cashmere']
+[[40.0, 47.368, 81.373], 'Double Spanish White']
+[[53.333, 26.471, 86.667], 'Satin Linen']
+[[140.0, 31.579, 92.549], 'Harp']
+[[163.333, 56.25, 93.725], 'Off Green']
+[[127.2, 100.0, 95.098], 'Hint of Green']
+[[180.0, 100.0, 95.098], 'Tranquil']
+[[29.61, 100.0, 45.294], 'Mango Tango']
+[[28.507, 91.701, 47.255], 'Christine']
+[[12.527, 65.468, 72.745], 'Tonys Pink']
+[[329.167, 60.0, 76.471], 'Kobi']
+[[9.412, 51.515, 80.588], 'Rose Fog']
+[[49.381, 95.763, 46.275], 'Corn']
+[[42.857, 65.468, 72.745], 'Putty']
+[[110.0, 13.636, 91.373], 'Gray Nurse']
+[[197.5, 100.0, 95.294], 'Lily White']
+[[182.5, 100.0, 95.294], 'Bubbles']
+[[35.313, 80.672, 53.333], 'Fire Bush']
+[[6.792, 53.535, 80.588], 'Shilo']
+[[34.737, 29.231, 87.255], 'Pearl Bush']
+[[76.364, 21.569, 90.0], 'Green White']
+[[78.621, 50.877, 88.824], 'Chrome White']
+[[138.0, 27.778, 92.941], 'Gin']
+[[166.154, 39.394, 93.529], 'Aqua Squeeze']
+[[28.326, 100.0, 45.686], 'Clementine']
+[[13.816, 77.551, 61.569], 'Burnt Sienna']
+[[31.062, 94.167, 47.059], 'Tahiti Gold']
+[[2.143, 38.889, 85.882], 'Oyster Pink']
+[[52.448, 76.471, 63.333], 'Confetti']
+[[0.0, 12.0, 90.196], 'Ebb']
+[[136.0, 51.724, 94.314], 'Ottoman']
+[[174.545, 100.0, 95.686], 'Clear Day']
+[[340.408, 70.0, 72.549], 'Carissma']
+[[32.093, 75.439, 66.471], 'Porsche']
+[[41.143, 80.645, 57.451], 'Tulip Tree']
+[[41.695, 73.75, 68.627], 'Rob Roy']
+[[40.8, 54.348, 81.961], 'Raffia']
+[[54.545, 34.375, 87.451], 'White Rock']
+[[140.0, 40.0, 94.118], 'Panache']
+[[205.714, 100.0, 95.882], 'Solitude']
+[[164.0, 55.556, 94.706], 'Aqua Spring']
+[[177.143, 100.0, 95.882], 'Dew']
+[[16.0, 75.0, 68.627], 'Apricot']
+[[19.0, 60.0, 80.392], 'Zinnwaldite']
+[[39.594, 83.83, 53.922], 'Fuel Yellow']
+[[45.19, 80.612, 61.569], 'Ronchi']
+[[296.923, 53.425, 85.686], 'French Lilac']
+[[23.529, 57.303, 82.549], 'Just Right']
+[[52.174, 70.769, 74.51], 'Wild Rice']
+[[58.723, 55.294, 83.333], 'Fall Green']
+[[58.0, 44.118, 86.667], 'Aths Special']
+[[62.081, 86.935, 60.98], 'Starship']
+[[345.991, 91.903, 48.431], 'Red Ribbon']
+[[26.986, 85.306, 51.961], 'Tango']
+[[32.941, 85.0, 52.941], 'Carrot Orange']
+[[355.765, 70.248, 76.275], 'Sea Pink']
+[[27.778, 75.0, 71.765], 'Tacao']
+[[25.161, 63.265, 80.784], 'Desert Sand']
+[[30.909, 64.706, 80.0], 'Pancho']
+[[43.0, 62.5, 81.176], 'Chamois']
+[[57.857, 70.0, 76.471], 'Primrose']
+[[80.0, 54.545, 91.373], 'Frost']
+[[180.0, 28.571, 94.51], 'Aqua Haze']
+[[210.0, 100.0, 96.471], 'Zumthor']
+[[140.0, 50.0, 95.294], 'Narvik']
+[[67.5, 95.238, 75.294], 'Honeysuckle']
+[[300.0, 76.056, 72.157], 'Lavender Magenta']
+[[3.75, 58.537, 83.922], 'Beauty Bush']
+[[44.667, 72.581, 75.686], 'Chalky']
+[[30.0, 55.263, 85.098], 'Almond']
+[[50.0, 76.056, 72.157], 'Flax']
+[[12.0, 37.037, 89.412], 'Bizarre']
+[[49.846, 65.657, 80.588], 'Double Colonial White']
+[[60.0, 15.0, 92.157], 'Cararra']
+[[60.504, 78.808, 70.392], 'Manz']
+[[63.0, 57.143, 86.275], 'Tahuna Sands']
+[[216.0, 17.241, 94.314], 'Athens Gray']
+[[66.25, 66.667, 85.882], 'Tusk']
+[[76.364, 50.0, 91.373], 'Loafer']
+[[186.667, 36.0, 95.098], 'Catskill White']
+[[187.059, 100.0, 96.667], 'Twilight Blue']
+[[70.099, 100.0, 80.196], 'Jonquil']
+[[95.172, 100.0, 94.314], 'Rice Flower']
+[[24.205, 84.615, 59.216], 'Jaffa']
+[[0.0, 0.0, 93.725], 'Gallery']
+[[195.0, 14.286, 94.51], 'Porcelain']
+[[344.842, 76.0, 75.49], 'Mauvelous']
+[[51.692, 86.667, 55.882], 'Golden Dream']
+[[49.043, 79.31, 71.569], 'Golden Sand']
+[[49.091, 78.571, 72.549], 'Buff']
+[[317.143, 31.818, 91.373], 'Prim']
+[[54.0, 76.923, 74.51], 'Khaki']
+[[248.0, 78.947, 96.275], 'Selago']
+[[247.059, 100.0, 96.667], 'Titan White']
+[[208.0, 100.0, 97.059], 'Alice Blue']
+[[100.0, 75.0, 95.294], 'Feta']
+[[32.365, 100.0, 47.255], 'Gold Drop']
+[[348.837, 75.439, 77.647], 'Wewak']
+[[54.286, 78.947, 73.922], 'Sahara Sand']
+[[44.516, 52.542, 88.431], 'Parchment']
+[[261.818, 100.0, 95.686], 'Blue Chalk']
+[[56.25, 63.158, 85.098], 'Mint Julep']
+[[0.0, 0.0, 94.51], 'Seashell']
+[[130.0, 27.273, 95.686], 'Saltpan']
+[[70.244, 100.0, 83.922], 'Tidal']
+[[75.273, 100.0, 89.216], 'Chiffon']
+[[12.9, 88.496, 55.686], 'Flamingo']
+[[32.975, 100.0, 47.451], 'Tangerine']
+[[15.938, 71.111, 82.353], 'Mandys Pink']
+[[0.0, 0.0, 94.902], 'Concrete']
+[[180.0, 44.444, 96.471], 'Black Squeeze']
+[[10.385, 89.655, 54.51], 'Pomegranate']
+[[40.995, 90.204, 51.961], 'Buttercup']
+[[39.767, 78.182, 78.431], 'New Orleans']
+[[346.154, 52.0, 90.196], 'Vanilla Ice']
+[[47.143, 70.0, 84.314], 'Sidecar']
+[[17.143, 36.842, 92.549], 'Dawn Pink']
+[[50.0, 60.0, 88.235], 'Wheatfield']
+[[63.137, 95.031, 68.431], 'Canary']
+[[72.308, 82.979, 90.784], 'Orinoco']
+[[78.462, 100.0, 92.353], 'Carla']
+[[320.41, 100.0, 47.843], 'Hollywood Cerise']
+[[27.568, 87.059, 66.667], 'Sandy brown']
+[[45.306, 89.908, 57.255], 'Saffron']
+[[52.222, 90.756, 53.333], 'Ripe Lemon']
+[[43.636, 60.0, 89.216], 'Janna']
+[[40.0, 21.429, 94.51], 'Pampas']
+[[0.0, 0.0, 95.686], 'Wild Sand']
+[[218.182, 100.0, 97.843], 'Zircon']
+[[352.969, 86.486, 70.98], 'Froly']
+[[42.353, 88.439, 66.078], 'Cream Can']
+[[31.304, 82.143, 78.039], 'Manhattan']
+[[37.412, 80.952, 79.412], 'Maize']
+[[39.091, 76.744, 83.137], 'Wheat']
+[[49.88, 80.583, 79.804], 'Sandwisp']
+[[15.789, 48.718, 92.353], 'Pot Pourri']
+[[38.824, 62.963, 89.412], 'Albescent White']
+[[345.0, 28.571, 94.51], 'Soft Peach']
+[[52.5, 44.444, 92.941], 'Ecru White']
+[[60.0, 55.556, 91.176], 'Beige']
+[[61.895, 95.96, 61.176], 'Golden Fizz']
+[[69.231, 100.0, 87.255], 'Australian Mint']
+[[337.674, 90.526, 62.745], 'French Rose']
+[[329.448, 90.055, 64.51], 'Brilliant Rose']
+[[332.927, 82.0, 80.392], 'Illusion']
+[[37.5, 47.059, 93.333], 'Merino']
+[[180.0, 5.882, 96.667], 'Black Haze']
+[[75.429, 100.0, 93.137], 'Spring Sun']
+[[336.949, 91.71, 62.157], 'Violet Red']
+[[28.525, 97.6, 49.02], 'Chilean Fire']
+[[328.5, 88.235, 73.333], 'Persian Pink']
+[[32.727, 89.937, 68.824], 'Rajah']
+[[337.021, 74.603, 87.647], 'Azalea']
+[[336.429, 63.636, 91.373], 'We Peep']
+[[46.364, 57.895, 92.549], 'Quarter Spanish White']
+[[264.0, 33.333, 97.059], 'Whisper']
+[[120.0, 23.077, 97.451], 'Snow Drift']
+[[36.727, 92.179, 64.902], 'Casablanca']
+[[328.302, 79.104, 86.863], 'Chantilly']
+[[329.032, 68.889, 91.176], 'Cherub']
+[[40.879, 86.667, 79.412], 'Marzipan']
+[[49.615, 91.765, 66.667], 'Energy Yellow']
+[[38.947, 80.282, 86.078], 'Givry']
+[[30.0, 53.333, 94.118], 'White Linen']
+[[261.818, 100.0, 97.843], 'Magnolia']
+[[42.857, 33.333, 95.882], 'Spring Wood']
+[[57.857, 66.667, 91.765], 'Coconut Cream']
+[[252.0, 45.455, 97.843], 'White Lilac']
+[[60.0, 6.667, 97.059], 'Desert Storm']
+[[60.645, 88.571, 79.412], 'Texas']
+[[62.667, 81.818, 89.216], 'Corn Field']
+[[67.143, 91.304, 90.98], 'Mimosa']
+[[357.358, 92.982, 66.471], 'Carnation']
+[[38.385, 93.064, 66.078], 'Saffron Mango']
+[[328.8, 67.568, 92.745], 'Carousel Pink']
+[[39.344, 83.562, 85.686], 'Dairy Cream']
+[[52.4, 92.593, 68.235], 'Portica']
+[[324.0, 55.556, 94.706], 'Amour']
+[[57.143, 63.636, 93.529], 'Rum Swizzle']
+[[63.103, 100.0, 77.255], 'Dolly']
+[[100.0, 100.0, 98.235], 'Sugar Cane']
+[[26.087, 95.833, 52.941], 'Ecstasy']
+[[25.125, 94.118, 66.667], 'Tan Hide']
+[[33.409, 89.796, 80.784], 'Corvette']
+[[38.961, 88.506, 82.941], 'Peach Yellow']
+[[55.2, 100.0, 49.02], 'Turbo']
+[[45.231, 86.667, 85.294], 'Astra']
+[[41.739, 82.143, 89.02], 'Champagne']
+[[30.0, 66.667, 94.118], 'Linen']
+[[18.0, 50.0, 96.078], 'Fantasy']
+[[55.0, 78.261, 90.98], 'Citrine White']
+[[0.0, 0.0, 98.039], 'Alabaster']
+[[67.2, 86.207, 94.314], 'Hint of Yellow']
+[[63.297, 100.0, 82.157], 'Milan']
+[[348.0, 95.092, 68.039], 'Brink Pink']
+[[0.0, 93.443, 76.078], 'Geraldine']
+[[315.824, 91.919, 80.588], 'Lavender Rose']
+[[34.286, 96.33, 57.255], 'Sea Buckthorn']
+[[39.569, 96.667, 52.941], 'Sun']
+[[331.948, 90.588, 83.333], 'Lavender Pink']
+[[10.227, 91.667, 81.176], 'Rose Bud']
+[[332.459, 88.406, 86.471], 'Cupid']
+[[325.532, 85.455, 89.216], 'Classic Rose']
+[[23.514, 90.244, 83.922], 'Apricot Peach']
+[[43.562, 90.123, 84.118], 'Banana Mania']
+[[51.799, 94.558, 71.176], 'Marigold Yellow']
+[[52.448, 94.702, 70.392], 'Festival']
+[[50.811, 93.277, 76.667], 'Sweet Corn']
+[[54.304, 95.181, 67.451], 'Candy Corn']
+[[0.0, 20.0, 98.039], 'Hint of Red']
+[[63.478, 100.0, 86.471], 'Shalimar']
+[[315.19, 97.531, 52.353], 'Shocking Pink']
+[[342.097, 95.385, 74.51], 'Tickle Me Pink']
+[[34.17, 97.38, 55.098], 'Tree Poppy']
+[[43.784, 97.368, 55.294], 'Lightning Yellow']
+[[44.698, 96.129, 69.608], 'Goldenrod']
+[[50.83, 97.447, 53.922], 'Candlelight']
+[[39.6, 94.34, 79.216], 'Cherokee']
+[[49.091, 88.0, 90.196], 'Double Pearl Lusta']
+[[45.0, 84.211, 92.549], 'Pearl Lusta']
+[[12.0, 45.455, 97.843], 'Vista White']
+[[53.333, 60.0, 97.059], 'Bianca']
+[[63.333, 94.737, 92.549], 'Moon Glow']
+[[67.5, 100.0, 95.294], 'China Ivory']
+[[90.0, 100.0, 98.824], 'Ceramic']
+[[350.209, 98.354, 52.353], 'Torch Red']
+[[349.259, 97.59, 67.451], 'Wild Watermelon']
+[[21.386, 98.058, 59.608], 'Crusta']
+[[28.537, 98.4, 50.98], 'Sorbus']
+[[358.085, 95.918, 80.784], 'Sweet Pink']
+[[28.421, 95.0, 84.314], 'Light Apricot']
+[[339.474, 90.476, 91.765], 'Pig Pink']
+[[9.091, 89.189, 92.745], 'Cinderella']
+[[44.423, 96.296, 78.824], 'Golden Glow']
+[[54.937, 98.34, 52.745], 'Lemon']
+[[39.13, 85.185, 94.706], 'Old Lace']
+[[50.0, 91.304, 90.98], 'Half Colonial White']
+[[55.5, 95.238, 83.529], 'Drover']
+[[60.857, 97.222, 85.882], 'Pale Prim']
+[[62.857, 100.0, 91.765], 'Cumulus']
+[[325.794, 99.074, 57.647], 'Persian Rose']
+[[3.789, 98.958, 62.353], 'Sunset Orange']
+[[6.375, 98.765, 68.235], 'Bittersweet']
+[[36.72, 99.206, 50.588], 'California']
+[[39.6, 99.206, 50.588], 'Yellow Sea']
+[[9.63, 97.59, 83.725], 'Melon']
+[[46.701, 98.98, 61.569], 'Bright Sun']
+[[45.839, 98.773, 68.039], 'Dandelion']
+[[41.416, 98.261, 77.451], 'Salomie']
+[[41.707, 97.619, 83.529], 'Cape Honey']
+[[334.737, 90.476, 95.882], 'Remy']
+[[41.25, 96.0, 90.196], 'Oasis']
+[[13.333, 90.0, 96.078], 'Bridesmaid']
+[[46.909, 96.491, 88.824], 'Beeswax']
+[[42.632, 95.0, 92.157], 'Bleach White']
+[[48.0, 96.154, 89.804], 'Pipi']
+[[42.857, 94.595, 92.745], 'Half Spanish White']
+[[336.0, 83.333, 97.647], 'Wisp Pink']
+[[18.462, 86.667, 97.059], 'Provincial Pink']
+[[46.875, 94.118, 93.333], 'Half Dutch White']
+[[47.143, 93.333, 94.118], 'Solitaire']
+[[291.429, 100.0, 98.627], 'White Pointer']
+[[48.889, 93.103, 94.314], 'Off Yellow']
+[[52.941, 89.474, 96.275], 'Orange White']
+[[0.0, 100.0, 50.0], 'Red']
+[[330.118, 100.0, 50.0], 'Rose']
+[[312.0, 100.0, 50.0], 'Purple Pizzazz']
+[[300.0, 100.0, 50.0], 'Magenta / Fuchsia']
+[[8.471, 100.0, 50.0], 'Scarlet']
+[[330.0, 100.0, 60.0], 'Wild Strawberry']
+[[315.0, 100.0, 60.0], 'Razzle Dazzle Rose']
+[[347.822, 100.0, 60.392], 'Radical Red']
+[[3.251, 100.0, 60.196], 'Red Orange']
+[[0.0, 100.0, 62.549], 'Coral Red']
+[[18.118, 100.0, 50.0], 'Vermilion']
+[[18.588, 100.0, 50.0], 'International Orange']
+[[12.3, 100.0, 60.784], 'Outrageous Orange']
+[[24.0, 100.0, 50.0], 'Blaze Orange']
+[[300.0, 100.0, 70.0], 'Pink Flamingo']
+[[19.554, 100.0, 56.078], 'Orange']
+[[330.0, 100.0, 70.588], 'Hot Pink']
+[[8.372, 100.0, 66.275], 'Persimmon']
+[[300.0, 100.0, 71.765], 'Blush Pink']
+[[17.734, 100.0, 60.196], 'Burning Orange']
+[[24.156, 100.0, 54.706], 'Pumpkin']
+[[28.548, 100.0, 51.373], 'Flamenco']
+[[29.882, 100.0, 50.0], 'Flush Orange']
+[[16.114, 100.0, 65.686], 'Coral']
+[[14.0, 100.0, 70.588], 'Salmon']
+[[33.882, 100.0, 50.0], 'Pizazz']
+[[32.5, 100.0, 52.941], 'West Side']
+[[349.636, 100.0, 78.431], 'Pink Salmon']
+[[30.0, 100.0, 60.0], 'Neon Carrot']
+[[20.0, 100.0, 70.0], 'Atomic Tangerine']
+[[11.811, 100.0, 75.098], 'Vivid Tangerine']
+[[32.417, 100.0, 58.627], 'Sunshade']
+[[37.647, 100.0, 50.0], 'Orange Peel']
+[[7.29, 100.0, 79.02], 'Mona Lisa']
+[[38.824, 100.0, 50.0], 'Web Orange']
+[[336.404, 100.0, 82.549], 'Carnation Pink']
+[[20.0, 100.0, 75.294], 'Hit Pink']
+[[34.286, 100.0, 62.941], 'Yellow Orange']
+[[2.892, 100.0, 83.725], 'Cornflower Lilac']
+[[358.462, 100.0, 84.706], 'Sundown']
+[[39.643, 100.0, 56.078], 'My Sin']
+[[33.882, 100.0, 66.667], 'Texas Rose']
+[[335.0, 100.0, 85.882], 'Cotton Candy']
+[[28.182, 100.0, 74.118], 'Macaroni and Cheese']
+[[43.765, 100.0, 50.0], 'Selective Yellow']
+[[35.25, 100.0, 68.627], 'Koromiko']
+[[44.941, 100.0, 50.0], 'Amber']
+[[16.552, 100.0, 82.941], 'Wax Flower']
+[[349.524, 100.0, 87.647], 'Pink']
+[[2.857, 100.0, 87.647], 'Your Pink']
+[[47.244, 100.0, 50.196], 'Supernova']
+[[25.714, 100.0, 82.157], 'Flesh']
+[[45.0, 100.0, 60.0], 'Sunglow']
+[[41.227, 100.0, 68.039], 'Golden Tainoi']
+[[30.0, 100.0, 80.0], 'Peach Orange']
+[[33.913, 100.0, 77.451], 'Chardonnay']
+[[345.652, 100.0, 90.98], 'Pastel Pink']
+[[22.5, 100.0, 85.882], 'Romantic']
+[[37.043, 100.0, 77.451], 'Grandis']
+[[50.588, 100.0, 50.0], 'Gold']
+[[50.824, 100.0, 50.0], 'School bus Yellow']
+[[358.462, 100.0, 92.353], 'Cosmos']
+[[47.066, 100.0, 67.255], 'Mustard']
+[[8.78, 100.0, 91.961], 'Peach Schnapps']
+[[34.5, 100.0, 84.314], 'Caramel']
+[[19.2, 100.0, 90.196], 'Tuft Bush']
+[[17.5, 100.0, 90.588], 'Watusi']
+[[319.412, 100.0, 93.333], 'Pink Lace']
+[[35.854, 100.0, 83.922], 'Navajo White']
+[[33.947, 100.0, 85.098], 'Frangipani']
+[[3.75, 100.0, 93.725], 'Pippin']
+[[326.0, 100.0, 94.118], 'Pale Rose']
+[[30.0, 100.0, 88.627], 'Negroni']
+[[43.579, 100.0, 81.373], 'Cream Brulee']
+[[39.2, 100.0, 85.294], 'Peach']
+[[33.214, 100.0, 89.02], 'Tequila']
+[[49.787, 100.0, 72.353], 'Kournikova']
+[[37.091, 100.0, 89.216], 'Sandy Beach']
+[[30.698, 100.0, 91.569], 'Karry']
+[[55.169, 100.0, 53.725], 'Broom']
+[[43.881, 100.0, 86.863], 'Colonial White']
+[[33.846, 100.0, 92.353], 'Derby']
+[[49.787, 100.0, 81.569], 'Vis Vis']
+[[44.516, 100.0, 87.843], 'Egg White']
+[[37.143, 100.0, 91.765], 'Papaya Whip']
+[[9.474, 100.0, 96.275], 'Fair Pink']
+[[35.0, 100.0, 92.941], 'Peach Cream']
+[[340.0, 100.0, 97.059], 'Lavender blush']
+[[55.227, 100.0, 65.49], 'Gorse']
+[[48.649, 100.0, 85.49], 'Buttermilk']
+[[38.462, 100.0, 92.353], 'Pink Lady']
+[[10.588, 100.0, 96.667], 'Forget Me Not']
+[[325.714, 100.0, 97.255], 'Tutu']
+[[52.653, 100.0, 80.784], 'Picasso']
+[[8.571, 100.0, 97.255], 'Chardon']
+[[55.448, 100.0, 71.569], 'Paris Daisy']
+[[46.531, 100.0, 90.392], 'Barley White']
+[[40.588, 100.0, 93.333], 'Egg Sour']
+[[38.71, 100.0, 93.922], 'Sazerac']
+[[31.304, 100.0, 95.49], 'Serenade']
+[[5.0, 100.0, 97.647], 'Chablis']
+[[24.706, 100.0, 96.667], 'Seashell Peach']
+[[10.0, 100.0, 97.647], 'Sauvignon']
+[[47.442, 100.0, 91.569], 'Milk Punch']
+[[43.125, 100.0, 93.725], 'Varden']
+[[6.0, 100.0, 98.039], 'Rose White']
+[[50.87, 100.0, 90.98], 'Baja White']
+[[47.586, 100.0, 94.314], 'Gin Fizz']
+[[45.6, 100.0, 95.098], 'Early Dawn']
+[[54.0, 100.0, 90.196], 'Lemon Chiffon']
+[[32.727, 100.0, 97.843], 'Bridal Heath']
+[[53.143, 100.0, 93.137], 'Scotch Mist']
+[[20.0, 100.0, 98.824], 'Soapstone']
+[[58.235, 100.0, 80.0], 'Witch Haze']
+[[51.429, 100.0, 95.882], 'Buttery White']
+[[49.412, 100.0, 96.667], 'Island Spice']
+[[57.447, 100.0, 90.784], 'Cream']
+[[55.2, 100.0, 95.098], 'Chilean Heath']
+[[54.783, 100.0, 95.49], 'Travertine']
+[[50.0, 100.0, 97.647], 'Orchid White']
+[[49.091, 100.0, 97.843], 'Quarter Pearl Lusta']
+[[58.0, 100.0, 94.118], 'Half and Half']
+[[56.842, 100.0, 96.275], 'Apricot White']
+[[56.0, 100.0, 97.059], 'Rice Cake']
+[[53.333, 100.0, 98.235], 'Black White']
+[[30.0, 100.0, 99.608], 'Romance']
+[[60.0, 100.0, 50.0], 'Yellow']
+[[60.0, 100.0, 70.0], 'Laser Lemon']
+[[60.0, 100.0, 80.0], 'Pale Canary']
+[[60.0, 100.0, 85.294], 'Portafino']
+[[60.0, 100.0, 97.059], 'Ivory']
+[[0.0, 0.0, 100.0], 'White']]
