@@ -1,5 +1,5 @@
 """
-Simple color names
+Simple color names in HSL colorspace
 """
 
 colors_20 = [

@@ -1,5 +1,5 @@
 """
-CSS color names
+CSS color names in HSL colorspace
 """
 
 colors_150 = [
