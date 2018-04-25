@@ -4,7 +4,6 @@ from lab_colors import colors_1500, colors_150, colors_20
 from colormath.color_objects import sRGBColor, LabColor
 from colormath.color_conversions import convert_color
 from colormath.color_diff import delta_e_cie2000
-from math import sqrt
 import os
 import sys
 
@@ -70,7 +69,7 @@ area_names = [c[2] for c in area_names]
 print(set(area_names[:3]))
 area_names = get_colors_names(by_area, lab_20)
 area_names = [c[2] for c in area_names]
-print(set(area_names[:4]))
+print(set(area_names[:5]))
 
 print("saturation colors:")
 sat_names = get_colors_names(by_sat, lab_1500)
@@ -81,4 +80,4 @@ sat_names = [c[2] for c in sat_names]
 print(set(sat_names[:3]))
 sat_names = get_colors_names(by_sat, lab_20)
 sat_names = [c[2] for c in sat_names]
-print(set(sat_names[:4]))
+print(set(sat_names[:5]))
