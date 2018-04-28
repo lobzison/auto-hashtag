@@ -1,8 +1,8 @@
 from __future__ import division
 import colorsys
-from colormath.color_objects import HSLColor, LabColor
+from colormath.color_objects import HSLColor, LabColor, sRGBColor
 from colormath.color_conversions import convert_color
-from colors20 import colors_20
+from colors1500 import colors_1500
 
 
 def hex_to_rgb_to_hls(hex):
@@ -14,7 +14,7 @@ def hex_to_rgb_to_hls(hex):
 
 
 new_colors = [[list(convert_color(HSLColor(
-    col[0][0] / 360, col[0][1] / 100, col[0][2] / 100), LabColor).get_value_tuple()), col[1]] for col in colors_20]
+    col[0][0], col[0][1] / 100, col[0][2] / 100), LabColor).get_value_tuple()), col[1]] for col in colors_1500]
 
 new_colors = [
     [
@@ -22,5 +22,8 @@ new_colors = [
     ]
     for color in new_colors]
 
-for line in new_colors:
-    print(str(line)+',')
+
+
+with file('tmp.txt', 'w') as f:
+    for line in new_colors:
+        f.write(str(line) + ',\n')

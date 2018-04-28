@@ -1,14 +1,15 @@
 import colorgram
 from PIL import Image
-from colors1500 import colors_1500
-from colors150 import colors_150
-from colors20 import colors_20
-from math import sqrt
-import os, sys
+from lab_colors import colors_1500, colors_150, colors_20
+from colormath.color_objects import sRGBColor, LabColor
+from colormath.color_conversions import convert_color
+from colormath.color_diff import delta_e_cie2000
+import os
+import sys
 
 name = 6
 size = 360, 360
-infile = r'/Users/lobzison/Documents/auto-hashtag/src/{}.jpg'.format(name)
+infile = r'{}.jpg'.format(name)
 
 outfile = os.path.splitext(infile)[0] + ".thumbnail"
 if infile != outfile:
@@ -19,69 +20,64 @@ if infile != outfile:
     except IOError:
         print "cannot create thumbnail for '%s'" % infile
 
-colors = colorgram.extract(r'/Users/lobzison/Documents/auto-hashtag/src/{}.thumbnail'.format(name), 12)
+colors = colorgram.extract(r'{}.thumbnail'.format(name), 12)
 
 
-print("----_____------")
-
-by_area = [color for color in colors]
-by_area.sort(key=lambda x: x.proportion, reverse=True)
-
-by_sat = [color for color in colors]
-by_sat.sort(key=lambda x: x.hsl.s, reverse=True)
+def get_colors_names(colors, colorspace):
+    return [name_the_color(color, colorspace) for color in colors]
 
 
-# colors.sort(key=lambda x: x.hsl.s, reverse=True)
-
-
-# for color in colors:
-#     print(color.hsl)
-#     print(color.rgb)
-#     print(color.proportion)
-#     print("----")
-
-def get_colors_names(colors, scheme):
-    return [name_the_color(color, scheme) for color in colors]
-
-def name_the_color(color, scheme):
+def name_the_color(color, colorspace):
     """ Tags the color with name
     color - tuple with (h, s, l)
     return format - ((h, s, l), name)
     """
-    gen = ((find_closest(color, hsl_color[0]), color, hsl_color[1]) for hsl_color in scheme)
-    res = min(gen)
-    return (res[1], res[2])
+    dist = ((delta_e_cie2000(color, lab_color[0]),
+             color, lab_color[1], lab_color[0]) for lab_color in colorspace)
+    min_dist = min(dist)
+    return min_dist
 
 
+def get_colorspace(scheme):
+    """ Retruns list of mathcolor objects with names"""
+    return [(LabColor(*color[0]), color[1]) for color in scheme]
 
-def find_closest(color, hsl2):
-    """
-       returns double with distance
-    """
-    return sqrt((color.hsl.h-hsl2[0]) ** 2 + (color.hsl.s-hsl2[1]) ** 2 + (color.hsl.l-hsl2[2]) ** 2)
+def convert_rgb_to_lab(color):
+    """ Converts colorgram's HSL to colormath's Lab """
+    return convert_color(sRGBColor(*color.rgb, is_upscaled=True), LabColor)
 
+
+by_area = colors[:]
+by_area.sort(key=lambda x: x.proportion, reverse=True)
+by_area = [convert_rgb_to_lab(color) for color in by_area]
+
+by_sat = colors[:]
+by_sat.sort(key=lambda x: x.hsl.s, reverse=True)
+by_sat = [convert_rgb_to_lab(color) for color in by_sat]
+
+
+lab_1500 = get_colorspace(colors_1500)
+lab_150 = get_colorspace(colors_150)
+lab_20 = get_colorspace(colors_20)
 
 print("area colors:")
-area_names = get_colors_names(by_area, colors_1500)
-area_names = [c[1] for c in area_names]
-print(set(area_names[:1]))
-area_names = get_colors_names(by_area, colors_150)
-area_names = [c[1] for c in area_names]
+area_names = get_colors_names(by_area, lab_1500)
+area_names = [c[2] for c in area_names]
 print(set(area_names[:2]))
-area_names = get_colors_names(by_area, colors_20)
-area_names = [c[1] for c in area_names]
+area_names = get_colors_names(by_area, lab_150)
+area_names = [c[2] for c in area_names]
 print(set(area_names[:3]))
+area_names = get_colors_names(by_area, lab_20)
+area_names = [c[2] for c in area_names]
+print(set(area_names[:5]))
 
 print("saturation colors:")
-sat_names = get_colors_names(by_sat,colors_1500)
-sat_names = [c[1] for c in sat_names]
-print(set(sat_names[:1]))
-sat_names = get_colors_names(by_sat,colors_150)
-sat_names = [c[1] for c in sat_names]
+sat_names = get_colors_names(by_sat, lab_1500)
+sat_names = [c[2] for c in sat_names]
 print(set(sat_names[:2]))
-sat_names = get_colors_names(by_sat,colors_20)
-sat_names = [c[1] for c in sat_names]
+sat_names = get_colors_names(by_sat, lab_150)
+sat_names = [c[2] for c in sat_names]
 print(set(sat_names[:3]))
-
-
-set(['Limeade','Olive', 'Lime', 'Soapstone', 'Snow','Coral'])
+sat_names = get_colors_names(by_sat, lab_20)
+sat_names = [c[2] for c in sat_names]
+print(set(sat_names[:5]))
