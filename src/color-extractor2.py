@@ -23,7 +23,7 @@ class NameTheColors(object):
         self.file = file
         self.colors_to_extract = 7
         try:
-            self.outfile = os.path.splitext(self.file)[0] + thumb_ext
+            self.outfile = os.path.splitext(self.file)[0] + self.thumb_ext
             # TODO find the actual exception
         except IOError:
             print("Incorrect file path")
@@ -35,7 +35,7 @@ class NameTheColors(object):
         if infile != self.outfile:
             try:
                 im = Image.open(infile)
-                im.thumbnail(thumb_size, Image.ANTIALIAS)
+                im.thumbnail(self.thumb_size, Image.ANTIALIAS)
                 im.save(self.outfile, "JPEG")
             except IOError:
                 print("Cannot create thumbnail for {}".format(infile))
@@ -64,7 +64,7 @@ class NameTheColors(object):
                returns list of colormath LAB colors"""
             return [convert_color(sRGBColor(*color.rgb, is_upscaled=True), LabColor)
                     for color in colors]
-        
+
         def get_colorspace(scheme):
             """ Retruns list of mathcolor objects with names"""
             return [(LabColor(*color[0]), color[1]) for color in scheme]
@@ -75,38 +75,33 @@ class NameTheColors(object):
             return format - ((h, s, l), name)
             """
             delta = ((delta_e_cie2000(color, lab_color[0]),
-                    color) for lab_color in colorspace)
+                      color) for lab_color in colorspace)
             min_delta = min(delta)
             return min_delta[1]
 
         def get_names(colors, colorspace):
             return set((name_the_color(color, colorspace) for color in colors))
-
+        # main execution part
+        
+        # extract colorgram colors
         colors = colorgram.extract(self.file, self.colors_to_extract)
+        # return only most interesting colors in order
         rgb_colors = get_rgb_coord(colors, 3)
+        # convert them into LAB colorspace
         lab_colors = get_lab_coords(rgb_colors)
+        # get colorspace objects for naming
         lab_1500 = get_colorspace(colors_1500)
         lab_150 = get_colorspace(colors_150)
         lab_20 = get_colorspace(colors_20)
         all_color_names = set([])
+        # union into final set all basic colors, 5 advanced colors and 2 super advanced colors
         all_color_names.union(get_names(lab_colors, lab_20))
         all_color_names.union(get_names(lab_colors[:5], lab_150))
         all_color_names.union(get_names(lab_colors[:2], lab_1500))
         return all_color_names
-
-
-
-
 
     def _create_hashtags(self):
         pass
 
     def _set_hashtags(self):
         pass
-
-    def _get_color_name(self):
-        pass
-
-    def _get_colorspace(self):
-        pass
-
