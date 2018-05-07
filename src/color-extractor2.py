@@ -8,6 +8,7 @@ from lab_colors import colors_1500, colors_150, colors_20
 from colormath.color_objects import sRGBColor, LabColor
 from colormath.color_conversions import convert_color
 from colormath.color_diff import delta_e_cie2000
+from string import upper, lower
 import os
 import sys
 
@@ -40,7 +41,7 @@ class NameTheColors(object):
             except IOError:
                 print("Cannot create thumbnail for {}".format(infile))
 
-    def get_color_names(self, amount):
+    def get_color_names(self, amount=3):
         """Returns names of the colors"""
 
         def get_rgb_coord(colors, amount):
@@ -82,7 +83,7 @@ class NameTheColors(object):
         def get_names(colors, colorspace):
             return set((name_the_color(color, colorspace) for color in colors))
         # main execution part
-        
+
         # extract colorgram colors
         colors = colorgram.extract(self.file, self.colors_to_extract)
         # return only most interesting colors in order
@@ -100,8 +101,24 @@ class NameTheColors(object):
         all_color_names.union(get_names(lab_colors[:2], lab_1500))
         return all_color_names
 
-    def _create_hashtags(self):
-        pass
+    def _create_hashtags(self, h, case):
+        res = ''
+        all_color_names = self.get_color_names()
+        if h:
+            preceding = '#'
+        else:
+            preceding = ''
+        if case == 'U':
+            mod_func = upper
+        elif case == 'L':
+            mod_func = lower
+        else:
+            mod_func = self._dummy
+        separator = ', '
+        return res.join(preceding + mod_func(col) + separator for col in all_color_names)
 
     def _set_hashtags(self):
+        pass
+
+    def _dummy(self):
         pass
