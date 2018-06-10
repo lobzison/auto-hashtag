@@ -1,8 +1,8 @@
 """
 Module for getting names of main colors on picture
 """
+
 from __future__ import print_function, division
-import colorgram
 from PIL import Image
 from lab_colors import colors_1500, colors_150, colors_20
 from colormath.color_objects import sRGBColor, LabColor
@@ -11,7 +11,7 @@ from colormath.color_diff import delta_e_cie2000
 from string import upper, lower
 import os
 import sys
-
+import colorgram
 
 class NameTheColors(object):
     """
