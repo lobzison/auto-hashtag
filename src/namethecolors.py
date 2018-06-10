@@ -23,23 +23,24 @@ class NameTheColors(object):
     def __init__(self, file):
         self.file = file
         self.colors_to_extract = 7
-        try:
-            self.outfile = os.path.splitext(self.file)[0] + self.thumb_ext
-            # TODO find the actual exception
-        except IOError:
-            print("Incorrect file path")
+        self.outfile = os.path.splitext(self.file)[0] + self.thumb_ext
+        if self._is_exists():
+            self._create_thumb()
+        else:
+            raise NameError(
+                "Could not find the file {}\{}".format(os.getcwd(), self.file))
 
     def _is_exists(self):
         return os.path.isfile(self.file)
 
-    def _create_thumb(self, infile):
-        if infile != self.outfile:
+    def _create_thumb(self):
+        if self.file != self.outfile:
             try:
-                im = Image.open(infile)
+                im = Image.open(self.file)
                 im.thumbnail(self.thumb_size, Image.ANTIALIAS)
                 im.save(self.outfile, "JPEG")
             except IOError:
-                print("Cannot create thumbnail for {}".format(infile))
+                print("Cannot create thumbnail for {}".format(self.file))
 
     def get_color_names(self, amount=3):
         """Returns names of the colors"""
@@ -76,7 +77,7 @@ class NameTheColors(object):
             return format - ((h, s, l), name)
             """
             delta = ((delta_e_cie2000(color, lab_color[0]),
-                      color) for lab_color in colorspace)
+                      lab_color[1]) for lab_color in colorspace)
             min_delta = min(delta)
             return min_delta[1]
 
@@ -85,7 +86,7 @@ class NameTheColors(object):
         # main execution part
 
         # extract colorgram colors
-        colors = colorgram.extract(self.file, self.colors_to_extract)
+        colors = colorgram.extract(self.outfile, self.colors_to_extract)
         # return only most interesting colors in order
         rgb_colors = get_rgb_coord(colors, 3)
         # convert them into LAB colorspace
@@ -94,11 +95,12 @@ class NameTheColors(object):
         lab_1500 = get_colorspace(colors_1500)
         lab_150 = get_colorspace(colors_150)
         lab_20 = get_colorspace(colors_20)
-        all_color_names = set([])
         # union into final set all basic colors, 5 advanced colors and 2 super advanced colors
-        all_color_names.union(get_names(lab_colors, lab_20))
-        all_color_names.union(get_names(lab_colors[:5], lab_150))
-        all_color_names.union(get_names(lab_colors[:2], lab_1500))
+        all_color_names = get_names(lab_colors, lab_20)
+        all_color_names.update(
+            get_names(lab_colors[:5], lab_150),
+            get_names(lab_colors[:2], lab_1500))
+
         return all_color_names
 
     def _create_hashtags(self, h, case):

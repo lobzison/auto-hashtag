@@ -2,7 +2,7 @@ from __future__ import division
 import colorsys
 from colormath.color_objects import HSLColor, LabColor, sRGBColor
 from colormath.color_conversions import convert_color
-from colors1500 import colors_1500
+from lab_colors import colors_1500, colors_150, colors_20
 
 
 def hex_to_rgb_to_hls(hex):
