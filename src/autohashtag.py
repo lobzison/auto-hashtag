@@ -2,9 +2,12 @@
 Module for genereting hashtagf for a photo
 """
 
+from namethecolors import NameTheColors
+import os
+
 class AutoHashtag(object):
     """
-    Class for generating pashtag
+    Class for generating hashtag
     """
 
     @staticmethod
@@ -13,7 +16,10 @@ class AutoHashtag(object):
         photo: String with file location
         returns python set of hashtags
         """
-        pass
+        p = NameTheColors(photo)
+        h = p.get_color_names()
+        p._delete_thumb()
+        return h
 
     @staticmethod
     def set_hashtags(photo):
@@ -21,7 +27,9 @@ class AutoHashtag(object):
         photo: String with file location
         Sets hashtags to photo's EXIF
         """
-        pass
+        p = NameTheColors(photo)
+        p._set_hashtags()
+        p._delete_thumb()
 
     @staticmethod
     def set_folder_hashtags(folder):
@@ -29,4 +37,10 @@ class AutoHashtag(object):
         folder: String with folder location
         Sets hashtags for all photos in the folder
         """
-        print(1)
+        if os.path.isdir(folder):
+            for filename in os.listdir(folder):
+                if filename.lower().endswith(".jpg") or filename.lower().endswith(".jpeg"):
+                    AutoHashtag.set_hashtags(os.path.join(folder, filename))
+        else:
+            print("input is not a folder {}".format(folder))     
+        
