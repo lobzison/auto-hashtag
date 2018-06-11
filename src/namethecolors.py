@@ -42,6 +42,7 @@ class NameTheColors(object):
         return os.path.isfile(self.file)
 
     def _create_thumb(self):
+        """Creates thumbnail"""
         if self.file != self.outfile:
             try:
                 im = Image.open(self.file)
@@ -162,6 +163,11 @@ class NameTheColors(object):
         return pack(mask, *filtered)
 
     def _set_hashtags(self):
+        """
+        Sets hashtags to a photos EXIF's keywords
+        Replaces the keywords
+        If exif doesn't exist - creates a dummy one
+        """
         # dummy exif if its empty
         EXIF = {'Exif': {}, '0th': {34665: 2110, 40094: ()}, 'Interop': {}, '1st': {}, 'thumbnail': None, 'GPS': {}}
         im = Image.open(self.file)
@@ -173,3 +179,10 @@ class NameTheColors(object):
         exif_dict["0th"][piexif.ImageIFD.XPKeywords] = kw_tuple
         exif_bytes = piexif.dump(exif_dict)
         im.save(self.file, "jpeg", exif=exif_bytes)
+
+    def _delete_thumb(self):
+        """Deletes the tumbnail"""
+        try:
+            os.remove(self.outfile)
+        except OSError:
+            pass
