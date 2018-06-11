@@ -29,6 +29,7 @@ class NameTheColors(object):
         else:
             raise NameError(
                 "Could not find the file {}\{}".format(os.getcwd(), self.file))
+        self.color_names = self._get_color_names()
 
     def _is_exists(self):
         return os.path.isfile(self.file)
@@ -42,7 +43,7 @@ class NameTheColors(object):
             except IOError:
                 print("Cannot create thumbnail for {}".format(self.file))
 
-    def get_color_names(self, amount=3):
+    def _get_color_names(self, amount=3):
         """Returns names of the colors"""
 
         def get_rgb_coord(colors, amount):
@@ -103,7 +104,17 @@ class NameTheColors(object):
 
         return all_color_names
 
-    def _create_hashtags(self, h, case):
+    def get_color_names(self):
+        """
+        Returns names of the colors of the picture
+        """
+        return self.color_names
+
+    def _create_hashtags(self, h=True, case='', separator=';'):
+        """
+        h - boolean, set # symbol or not, default - True
+        case - string U - upper, L - lower, default - initcap 
+        """
         res = ''
         all_color_names = self.get_color_names()
         if h:
@@ -116,11 +127,10 @@ class NameTheColors(object):
             mod_func = lower
         else:
             mod_func = self._dummy
-        separator = ', '
         return res.join(preceding + mod_func(col) + separator for col in all_color_names)
 
     def _set_hashtags(self):
         pass
 
-    def _dummy(self):
-        pass
+    def _dummy(self, _):
+        return _
