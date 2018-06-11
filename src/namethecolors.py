@@ -132,5 +132,17 @@ class NameTheColors(object):
     def _set_hashtags(self):
         pass
 
+<<<<<<< HEAD
     def _dummy(self, _):
         return _
+=======
+    def _dummy(self):
+        pass
+    
+# >>> new_test_str = 'my test str;'
+# >>> new_test_str += chr(0)
+# >>> new_test_str
+# 'my test str;\x00'
+# >>> mask = str(len(new_test_str))+"B"
+# >>> result =  tuple((item if y else y for item in struct.unpack(mask, new_test_str) for y in range(2)))
+>>>>>>> 9408929ce7c16244228d77fee8fc949eee632f44
