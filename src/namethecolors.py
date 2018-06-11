@@ -3,15 +3,22 @@ Module for getting names of main colors on picture
 """
 
 from __future__ import print_function, division
+# image processing modules
 from PIL import Image
+import colorgram
+import piexif
+# color names
 from lab_colors import colors_1500, colors_150, colors_20
+# colormath modules
 from colormath.color_objects import sRGBColor, LabColor
 from colormath.color_conversions import convert_color
 from colormath.color_diff import delta_e_cie2000
+
 from string import upper, lower
-import os
-import sys
-import colorgram
+
+from struct import unpack, pack
+import os, sys
+
 
 class NameTheColors(object):
     """
@@ -110,7 +117,7 @@ class NameTheColors(object):
         """
         return self.color_names
 
-    def _create_hashtags(self, h=True, case='', separator=';'):
+    def _create_hashtags(self, h=False, case='', separator=';'):
         """
         h - boolean, set # symbol or not, default - True
         case - string U - upper, L - lower, default - initcap 
@@ -127,22 +134,42 @@ class NameTheColors(object):
             mod_func = lower
         else:
             mod_func = self._dummy
-        return res.join(preceding + mod_func(col) + separator for col in all_color_names)
+        l = len(separator)
+        return res.join(preceding + mod_func(col) +
+                       separator for col in all_color_names)[:-l]
+        
 
-    def _set_hashtags(self):
-        pass
-
-<<<<<<< HEAD
     def _dummy(self, _):
         return _
-=======
-    def _dummy(self):
-        pass
-    
-# >>> new_test_str = 'my test str;'
-# >>> new_test_str += chr(0)
-# >>> new_test_str
-# 'my test str;\x00'
-# >>> mask = str(len(new_test_str))+"B"
-# >>> result =  tuple((item if y else y for item in struct.unpack(mask, new_test_str) for y in range(2)))
->>>>>>> 9408929ce7c16244228d77fee8fc949eee632f44
+
+    def _get_exif_keyword_tuple(self, in_str):
+        """
+        Returns in_str each symbol represented by int8u
+        Currently only supports english 
+        """
+        #TODO: add correct unicode 
+        tmp_str = in_str + chr(0)
+        mask = str(len(tmp_str)) + "B" #insert B emoji here
+        return tuple((item if not y else 0 for item in unpack(mask, tmp_str) for y in range(0, 2)))
+
+    def _get_str_from_exif_keyword_tuple(self, in_tuple):
+        """
+        Returnc string encoded with previus function
+        Currently only supports english 
+        """
+        filtered = tuple(filter(lambda x: x > 0, in_tuple))
+        mask = str(len(filtered)) + 'B'
+        return pack(mask, *filtered)
+
+    def _set_hashtags(self):
+        # dummy exif if its empty
+        EXIF = {'Exif': {}, '0th': {34665: 2110, 40094: ()}, 'Interop': {}, '1st': {}, 'thumbnail': None, 'GPS': {}}
+        im = Image.open(self.file)
+        try:
+            exif_dict = piexif.load(im.info["exif"])
+        except KeyError:
+            exif_dict = EXIF
+        kw_tuple = self._get_exif_keyword_tuple(self._create_hashtags())
+        exif_dict["0th"][piexif.ImageIFD.XPKeywords] = kw_tuple
+        exif_bytes = piexif.dump(exif_dict)
+        im.save(self.file, "jpeg", exif=exif_bytes)
