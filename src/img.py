@@ -23,7 +23,7 @@ class Img(object):
             self.file = file
         else:
             raise NameError(
-                "Could not find the file {}\{}".format(os.getcwd(), self.file))
+                "Could not find the file {}\{}".format(os.getcwd(), file))
         self.color_names = None
         self.image = self._create_image()
         self.tmb =self._create_thumb()
