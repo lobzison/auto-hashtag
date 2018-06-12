@@ -24,22 +24,22 @@ class TestColorExtractor(unittest.TestCase):
     def test_hashtags_initcap_hash(self):
         self.assertEquals(
             "#Brown, #Golden Tainoi, #Neon Carrot, #Gold, #Dark Orange, #Orange, #Yellow, #Chocolate, ",
-            self.test_colors_1._create_hashtags())
+            self.test_colors_1._create_hashtags(separator=', '))
 
     def test_hashtags_initcap_nohash(self):
         self.assertEquals(
             "Brown, Golden Tainoi, Neon Carrot, Gold, Dark Orange, Orange, Yellow, Chocolate, ",
-            self.test_colors_1._create_hashtags(False))
+            self.test_colors_1._create_hashtags(False, separator=', '))
 
     def test_hashtags_lower_hash(self):
         self.assertEquals(
             "#brown, #golden tainoi, #neon carrot, #gold, #dark orange, #orange, #yellow, #chocolate, ",
-            self.test_colors_1._create_hashtags(True, 'L'))
+            self.test_colors_1._create_hashtags(True, 'L', separator=', '))
 
     def test_hashtags_upper_hash(self):
         self.assertEquals(
             "#BROWN, #GOLDEN TAINOI, #NEON CARROT, #GOLD, #DARK ORANGE, #ORANGE, #YELLOW, #CHOCOLATE, ",
-            self.test_colors_1._create_hashtags(True, 'U'))
+            self.test_colors_1._create_hashtags(True, 'U', separator=', '))
 
 if __name__ == '__main__':
     unittest.main()
