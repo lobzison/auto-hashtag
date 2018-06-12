@@ -3,36 +3,37 @@ Module for genereting hashtagf for a photo
 """
 
 from namethecolors import NameTheColors
+from img import Img
 import os
+
 
 class AutoHashtag(object):
     """
     Class for generating hashtag
     """
+    ntc = NameTheColors()
 
-    @staticmethod
-    def get_hashtag_set(photo):
+    def get_hashtag_set(self, photo):
         """
         photo: String with file location
         returns python set of hashtags
         """
-        p = NameTheColors(photo)
-        h = p.get_color_names()
-        p._delete_thumb()
-        return h
+        im = Img(photo)
+        colors = self.ntc._get_color_names(im)
+        im.set_color_names(colors)
+        return im._create_hashtags()
 
-    @staticmethod
-    def set_hashtags(photo):
+    def set_hashtags(self, photo):
         """
         photo: String with file location
         Sets hashtags to photo's EXIF
         """
-        p = NameTheColors(photo)
-        p._set_hashtags()
-        p._delete_thumb()
+        im = Img(photo)
+        colors = self.ntc._get_color_names(im)
+        im.set_color_names(colors)
+        im._set_hashtags()
 
-    @staticmethod
-    def set_folder_hashtags(folder):
+    def set_folder_hashtags(self, folder):
         """
         folder: String with folder location
         Sets hashtags for all photos in the folder
@@ -40,7 +41,6 @@ class AutoHashtag(object):
         if os.path.isdir(folder):
             for filename in os.listdir(folder):
                 if filename.lower().endswith(".jpg") or filename.lower().endswith(".jpeg"):
-                    AutoHashtag.set_hashtags(os.path.join(folder, filename))
+                    self.set_hashtags(os.path.join(folder, filename))
         else:
-            print("input is not a folder {}".format(folder))     
-        
+            print("input is not a folder {}".format(folder))
